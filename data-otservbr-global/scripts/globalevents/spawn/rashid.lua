@@ -9,7 +9,7 @@ local positionByDay = {
 }
 
 local function rashidwebhook(message) -- New local function that runs on delay to send webhook message.
-	Webhook.sendMessage(":man_wearing_turban: " .. message, announcementChannels["serverAnnouncements"])
+	--Webhook.sendMessage(":man_wearing_turban: " .. message, announcementChannels["serverAnnouncements"])
 end
 
 local rashid = GlobalEvent("rashid")
@@ -26,7 +26,7 @@ function rashid.onStartup()
 
 		logger.info("Rashid arrived at {}", config.city)
 		local message = string.format("Rashid arrived at %s today.", config.city) -- Declaring the message to send to webhook.
-		addEvent(rashidwebhook, 60000, message) -- Event with 1 minute delay to send webhook message after server starts.
+		--addEvent(rashidwebhook, 60000, message) -- Event with 1 minute delay to send webhook message after server starts.
 	else
 		logger.warn("[rashid.onStartup] - Cannot create Rashid. Day: {}", os.date("%A"))
 	end

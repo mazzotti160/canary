@@ -44,7 +44,7 @@ monster.flags = {
 	canPushCreatures = true,
 	staticAttackChance = 90,
 	targetDistance = 1,
-	runHealth = 85,
+	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = true,
@@ -53,7 +53,7 @@ monster.flags = {
 }
 
 monster.events = {
-	"DisgustingOozeDeath",
+	--"DisgustingOozeDeath",
 }
 
 monster.light = {

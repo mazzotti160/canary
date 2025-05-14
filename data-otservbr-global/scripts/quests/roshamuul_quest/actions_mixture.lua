@@ -6,7 +6,7 @@ local buckets = {
 local lowerRoshamuulMixtune = Action()
 
 function lowerRoshamuulMixtune.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	if not target or type(target) ~= "userdata" or not target:isItem() then
+	if (target == nil) or not target:isItem() then
 		return false
 	end
 

@@ -2048,13 +2048,35 @@ void Player::sendPing() {
 
 	const int64_t noPongTime = timeNow - lastPong;
 	const auto &attackedCreature = getAttackedCreature();
-	if ((hasLostConnection || noPongTime >= 10000) && attackedCreature) {
+
+	if ((hasLostConnection || noPongTime >= 10000) && attackedCreature && !isVip()) {
 		setAttackedCreature(nullptr);
 	}
 
-	if (noPongTime >= 60000 && shouldForceLogout) {
+	static int64_t lastVipLogTime = 0;
+	const int64_t vipLogInterval = 120000;
+
+	if (isVip()) {
+		if (isExerciseTraining()) {
+			if (timeNow - lastVipLogTime >= vipLogInterval) {
+				//	g_logger().info("Player {} (VIP) in exercise training, not checked for ping timeout.", getName());
+				lastVipLogTime = timeNow;
+			}
+		} else if (noPongTime >= 60000 && shouldForceLogout) {
+			if (canLogout() && g_creatureEvents().playerLogout(static_self_cast<Player>())) {
+				//	g_logger().info("Player {} (VIP) has been kicked due to ping timeout. (no exercise training).", getName(), client != nullptr);
+				if (client) {
+					client->logout(true, true);
+				} else {
+					g_game().removeCreature(static_self_cast<Player>(), true);
+				}
+			} else {
+				shouldForceLogout = false;
+			}
+		}
+	} else if (noPongTime >= 60000 && shouldForceLogout) {
 		if (canLogout() && g_creatureEvents().playerLogout(static_self_cast<Player>())) {
-			g_logger().info("Player {} has been kicked due to ping timeout. (has client: {})", getName(), client != nullptr);
+			//	g_logger().info("Player {} has been kicked due to ping timeout. (has client: {})", getName(), client != nullptr);
 			if (client) {
 				client->logout(true, true);
 			} else {

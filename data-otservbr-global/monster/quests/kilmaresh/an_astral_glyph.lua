@@ -15,7 +15,7 @@ monster.speed = 235
 monster.manaCost = 0
 
 monster.events = {
-	"ForgottenKnowledgeBossDeath",
+	--"ForgottenKnowledgeBossDeath",
 	"AstralGlyphDeath",
 }
 

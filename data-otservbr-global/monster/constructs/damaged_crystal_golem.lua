@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Damaged Crystal Golem")
 local monster = {}
 
 monster.description = "a damaged crystal golem"
-monster.experience = 0
+monster.experience = 550
 monster.outfit = {
 	lookType = 508,
 	lookHead = 0,
@@ -13,24 +13,24 @@ monster.outfit = {
 	lookMount = 0,
 }
 
-monster.raceId = 874
+monster.raceId = 873
 monster.Bestiary = {
 	class = "Construct",
 	race = BESTY_RACE_CONSTRUCT,
-	toKill = 500,
-	FirstUnlock = 25,
-	SecondUnlock = 250,
-	CharmsPoints = 15,
-	Stars = 2,
-	Occurrence = 1,
-	Locations = "Golem Workshop in Gnomebase Alpha",
+	toKill = 1000,
+	FirstUnlock = 50,
+	SecondUnlock = 500,
+	CharmsPoints = 25,
+	Stars = 3,
+	Occurrence = 0,
+	Locations = "Golem Workshop.",
 }
 
-monster.health = 500
-monster.maxHealth = 500
+monster.health = 700
+monster.maxHealth = 700
 monster.race = "venom"
 monster.corpse = 16176
-monster.speed = 134
+monster.speed = 205
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -55,9 +55,9 @@ monster.flags = {
 	illusionable = false,
 	canPushItems = true,
 	canPushCreatures = true,
-	staticAttackChance = 90,
+	staticAttackChance = 70,
 	targetDistance = 1,
-	runHealth = 500,
+	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = true,
@@ -74,14 +74,28 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
+	{ text = "Crrrrk! Chhhhr!", yell = false },
 }
 
-monster.loot = {}
+monster.loot = {
+	{ name = "gold coin", chance = 100000, maxCount = 100 },
+		{ name = "red teleport crystal", chance = 1000, maxCount = 4 },	
+	{ name = "crystal sword", chance = 4710 },
+	{ name = "glorious axe", chance = 360 },
+	{ name = "strong health potion", chance = 7140 },
+	{ name = "strong mana potion", chance = 8270 },
+	{ name = "blue crystal splinter", chance = 4120 },
+	{ name = "cyan crystal fragment", chance = 1050 },
+	{ name = "crystalline spikes", chance = 7980 },
+}
+
+monster.attacks = {
+	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -150 },
+}
 
 monster.defenses = {
-	defense = 5,
-	armor = 30,
-	mitigation = 0.86,
+	defense = 15,
+	armor = 15,
 }
 
 monster.elements = {

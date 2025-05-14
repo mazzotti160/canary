@@ -49,13 +49,29 @@ monster.voices = {
 monster.loot = {}
 
 monster.attacks = {
-	{ name = "melee", interval = 2000, chance = 100, minDamage = -2, maxDamage = -7, attack = 130 },
+	{ name = "melee", interval = 2000, chance = 100, minDamage = -0, maxDamage = -0, attack = 130 },
+--[[	
+--FISICO UE	
+	{ name = "combat", interval = 2000, chance = 36, type = COMBAT_PHYSICALDAMAGE, minDamage = -4000, maxDamage = -6000, radius = 8, effect = CONST_ME_EXPLOSIONAREA, target = false },		
+--UE TERRA CONST_ME_PLANTATTACK
+	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_EARTHDAMAGE, minDamage = -1500, maxDamage = -2250, radius = 7, effect = CONST_ME_PLANTATTACK, target = false },	
+--UE MORTE -- CONST_ME_REAPER
+	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_DEATHDAMAGE, minDamage = -1500, maxDamage = -2250, radius = 7, effect = CONST_ME_REAPER, target = false },	
+--UE VIS -- CONST_ME_ELECTRICALSPARK
+	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_ENERGYDAMAGE, minDamage = -1500, maxDamage = -2250, radius = 7, effect = CONST_ME_ELECTRICALSPARK, target = false },	
+--UE FLAM -- CONST_ME_FIREAREA
+	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_FIREDAMAGE, minDamage = -1500, maxDamage = -2250, radius = 7, effect = CONST_ME_FIREAREA, target = false },	
+--UE HOLY -- CONST_ME_DIVINE_DAZZLE
+	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_HOLYDAMAGE, minDamage = -1500, maxDamage = -2250, radius = 7, effect = CONST_ME_DIVINE_DAZZLE, target = false },	
+--UE ICE CONST_ME_GIANTICE
+	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_ICEDAMAGE, minDamage = -1500, maxDamage = -2250, radius = 7, effect = CONST_ME_GIANTICE, target = false },	
+]]
 }
 
 monster.defenses = {
-	defense = 10,
-	armor = 7,
-	{ name = "combat", type = COMBAT_HEALING, chance = 15, interval = 2000, minDamage = 10000, maxDamage = 50000, effect = CONST_ME_MAGIC_BLUE },
+	defense = 0,
+	armor = 0,
+	{ name = "combat", type = COMBAT_HEALING, chance = 100, interval = 2000, minDamage = 100000, maxDamage = 500000, effect = CONST_ME_MAGIC_BLUE },
 }
 
 monster.elements = {

@@ -70,7 +70,7 @@ keywordHandler:addKeyword(
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
-	{ itemName = "advertisement sign", clientId = 17668, buy = 75 },
+	--{ itemName = "advertisement sign", clientId = 17668, buy = 75 },
 	{ itemName = "backpack", clientId = 2854, buy = 10 },
 	{ itemName = "bag", clientId = 2853, buy = 4 },
 	{ itemName = "bottle with rat urine", clientId = 17671, buy = 150 },

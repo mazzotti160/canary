@@ -18,6 +18,12 @@ npcConfig.flags = {
 	floorchange = false,
 }
 
+npcConfig.voices = {
+	interval = 15000,
+	chance = 0,
+	{ text = "All in one npc!" },
+}
+
 local keywordHandler = KeywordHandler:new()
 local npcHandler = NpcHandler:new(keywordHandler)
 
@@ -45,105 +51,18 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-local function endConversationWithDelay(npcHandler, npc, creature)
-	addEvent(function()
-		npcHandler:unGreet(npc, creature)
-	end, 1000)
-end
-
-local function greetCallback(npc, creature, message)
-	local player = Player(creature)
-	local playerId = player:getId()
-
-	--Checks if the player has completed the quest
-	if player:getStorageValue(Storage.Quest.U7_4.DjinnWar.MaridFaction.Mission03) ~= 3 then
-		if not MsgContains(message, "djanni'hah") then
-			npcHandler:say("Whoa! A human! This is no place for you, |PLAYERNAME|. Go and play somewhere else.", npc, creature)
-			endConversationWithDelay(npcHandler, npc, creature)
-			return false
-		end
-
-		if player:getStorageValue(Storage.Quest.U7_4.DjinnWar.EfreetFaction.Start) == 1 then
-			npcHandler:say({
-				"Hahahaha! ...",
-				"|PLAYERNAME|, that almost sounded like the word of greeting. Humans - cute they are!",
-			}, npc, creature)
-			endConversationWithDelay(npcHandler, npc, creature)
-			return false
-		end
-	end
-
-	npcHandler:say("<Sighs> Another {customer}! I've only just sat down! What is it, |PLAYERNAME|?", npc, creature)
-	npcHandler:setInteraction(npc, creature)
-
-	return true
-end
-
-local function creatureSayCallback(npc, creature, type, message)
-	local player = Player(creature)
-	local playerId = player:getId()
-
-	if not npcHandler:checkInteraction(npc, creature) then
-		return false
-	end
-
-	if MsgContains(message, "cookie") then
-		if player:getStorageValue(Storage.Quest.U8_1.WhatAFoolishQuest.Questline) == 31 and player:getStorageValue(Storage.Quest.U8_1.WhatAFoolishQuest.CookieDelivery.Djinn) ~= 1 then
-			npcHandler:say("You brought cookies! How nice of you! Can I have one?", npc, creature)
-			npcHandler:setTopic(playerId, 1)
-		end
-	elseif MsgContains(message, "yes") then
-		if npcHandler:getTopic(playerId) == 1 then
-			if not player:removeItem(130, 1) then
-				npcHandler:say("You have no cookie that I'd like.", npc, creature)
-				npcHandler:setTopic(playerId, 0)
-				return true
-			end
-
-			player:setStorageValue(Storage.Quest.U8_1.WhatAFoolishQuest.CookieDelivery.Djinn, 1)
-			if player:getCookiesDelivered() == 10 then
-				player:addAchievement("Allow Cookies?")
-			end
-
-			npc:getPosition():sendMagicEffect(CONST_ME_GIFT_WRAPS)
-			npcHandler:say("You see, good deeds like this will ... YOU ... YOU SPAWN OF EVIL! I WILL MAKE SURE THE MASTER LEARNS ABOUT THIS!", npc, creature)
-			npcHandler:removeInteraction(npc, creature)
-			npcHandler:resetNpc(creature)
-		end
-	elseif MsgContains(message, "no") then
-		if npcHandler:getTopic(playerId) == 1 then
-			npcHandler:say("I see.", npc, creature)
-			npcHandler:setTopic(playerId, 0)
-		end
-	end
-	return true
-end
-
-local function onTradeRequest(npc, creature)
-	local player = Player(creature)
-	local playerId = player:getId()
-
-	if player:getStorageValue(Storage.Quest.U7_4.DjinnWar.MaridFaction.Mission03) ~= 3 then
-		npcHandler:say("I'm sorry, human. But you need Gabel's permission to trade with me.", npc, creature)
-		return false
-	end
-
-	return true
-end
-
--- Greeting
-keywordHandler:addCustomGreetKeyword({ "djanni'hah" }, greetCallback, { npcHandler = npcHandler })
-
-npcHandler:setMessage(MESSAGE_FAREWELL, "Bye now, Neutrala |PLAYERNAME|. Visit old Bob again one day!")
-npcHandler:setMessage(MESSAGE_WALKAWAY, "Bye then.")
-npcHandler:setMessage(MESSAGE_SENDTRADE, "At your service, just browse through my wares.")
-
-npcHandler:setCallback(CALLBACK_ON_TRADE_REQUEST, onTradeRequest)
+-- Basic
+npcHandler:setMessage(MESSAGE_GREET, "Oh, please come in, |PLAYERNAME|. What do you need?")
+npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye.")
+npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye.")
+npcHandler:setMessage(MESSAGE_SENDTRADE, "Of course, just browse through my wares. {Footballs} have to be purchased separately.")
 npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
-npcHandler:setCallback(CALLBACK_GREET, greetCallback)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
+	--{ itemName = "all loot in loot pouch", clientId = 23721, sell = 1 },
+--start vendas
+	{ itemName = "all loot in pouch", clientId = 23721, sell = 1 },
 	{ itemName = "angelic axe", clientId = 7436, sell = 5000 },
 	{ itemName = "blue robe", clientId = 3567, sell = 10000 },
 	{ itemName = "bonelord shield", clientId = 3418, buy = 7000, sell = 1200 },
@@ -171,6 +90,7 @@ npcConfig.shop = {
 	{ itemName = "spike sword", clientId = 3271, buy = 8000, sell = 1000 },
 	{ itemName = "thaian sword", clientId = 7391, sell = 16000 },
 	{ itemName = "war hammer", clientId = 3279, buy = 10000, sell = 1200 },
+--end vendas
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

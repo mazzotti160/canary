@@ -160,19 +160,24 @@ end
 
 npcHandler:setMessage(MESSAGE_GREET, "Hello |PLAYERNAME|. You are probably eager to enter the {warzones}.")
 
-local function onTradeRequest(npc, creature)
-	if Player(creature):getStorageValue(Storage.Quest.U9_60.BigfootsBurden.BossKills) < 20 then
-		npcHandler:say("Only if you have killed 20 of our major enemies in the warzones I am allowed to trade with you.", npc, creature)
-		return false
-	end
-	return true
-end
+--local function onTradeRequest(npc, creature)
+--	if Player(creature):getStorageValue(Storage.Quest.U9_60.BigfootsBurden.BossKills) <= 0 then
+--		npcHandler:say("Only if you have killed 20 of our major enemies in the warzones I am allowed to trade with you.", npc, creature)
+--		return false
+--	end
+--	return true
+--end
 
 npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 npcHandler:setCallback(CALLBACK_ON_TRADE_REQUEST, onTradeRequest)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
+{ itemname = "crystalline axe", clientId = 16161, sell = 30000},
+{ itemname = "shiny blade", clientId = 16175, sell = 30000},
+{ itemname = "mycological mace", clientId = 16162, sell = 30000},	
+{ itemname = "crystalline sword", clientId = 16160, sell = 17500},
+	{ itemName = "all loot in pouch", clientId = 23721, sell = 1 },
 	{ itemName = "arbalest", clientId = 5803, sell = 42000 },
 	{ itemName = "arcane staff", clientId = 3341, sell = 42000 },
 	{ itemName = "baby seal doll", clientId = 7183, sell = 20000 },

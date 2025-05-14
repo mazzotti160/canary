@@ -73,21 +73,30 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "platinum coin", chance = 11000, maxCount = 57 },
-	{ name = "glowing rune", chance = 800, maxCount = 4 },
-	{ name = "small sapphire", chance = 900, maxCount = 4 },
-	{ name = "frosty heart", chance = 11000, maxCount = 4 },
-	{ id = 7441, chance = 20000 }, -- ice cube
-	{ id = 28568, chance = 20000 }, -- inkwell
-	{ name = "ultimate health potion", chance = 10003, maxCount = 4 },
-	{ name = "ultimate mana potion", chance = 10003, maxCount = 4 },
-	{ name = "ice rapier", chance = 500 },
-	{ name = "glacier mask", chance = 400 },
-	{ name = "piece of dead brain", chance = 10001, maxCount = 4 },
-	{ name = "crystal sword", chance = 300 },
-	{ name = "glacier robe", chance = 150 },
-	{ name = "glacier kilt", chance = 150 },
-	{ name = "slime heart", chance = 10002, maxCount = 4 },
+	{ name = "small sapphire", chance = 10676, maxCount = 3 },
+	{ name = "platinum coin", chance = 8238, maxCount = 50 },
+	{ name = "glowing rune", chance = 13565, maxCount = 6 },
+	{ name = "frosty heart", chance = 10650, maxCount = 1 },
+	{ name = "ultimate mana potion", chance = 5906, maxCount = 1 },
+	--{ name = "inkwell (black)", chance = 6972, maxCount = 1 },
+		{ id = 28568, chance = 6972 }, -- inkwell
+	{ name = "ultimate health potion", chance = 12425, maxCount = 1 },
+	{ id = 7441, chance = 14325 }, -- ice cube
+	--{ name = "ice cube", chance = 14325, maxCount = 1 },
+	{ name = "glacier mask", chance = 12456, maxCount = 1 },
+	{ name = "ice rapier", chance = 10108, maxCount = 1 },
+	{ name = "crystal mace", chance = 5169, maxCount = 1 },
+	{ name = "crystal sword", chance = 12311, maxCount = 1 },
+	{ name = "slime heart", chance = 10171, maxCount = 1 },
+	{ name = "piece of dead brain", chance = 5282, maxCount = 1 },
+	{ name = "diamond sceptre", chance = 7730, maxCount = 1 },
+	{ name = "glacier kilt", chance = 8215, maxCount = 1 },
+	{ name = "glacier robe", chance = 12603, maxCount = 1 },
+	{ name = "sapphire hammer", chance = 6128, maxCount = 1 },
+	{ name = "glacial rod", chance = 12769, maxCount = 1 },
+	{ name = "crystalline armor", chance = 10285, maxCount = 1 },
+	{ name = "leviathan's amulet", chance = 10349, maxCount = 1 },
+	{ name = "shard", chance = 8430, maxCount = 1 },
 }
 
 monster.attacks = {

@@ -86,6 +86,7 @@ monster.loot = {
 	{ name = "serpent sword", chance = 1360 },
 	{ name = "black shield", chance = 1320 },
 	{ name = "white mushroom", chance = 7142, maxCount = 5 },
+	{ name = "red teleport crystal", chance = 1000, maxCount = 4 },	
 	{ name = "blue piece of cloth", chance = 2080 },
 	{ name = "yellow piece of cloth", chance = 2160 },
 	{ name = "strong health potion", chance = 4930 },

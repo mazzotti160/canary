@@ -77,21 +77,30 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "platinum coin", chance = 100000, maxCount = 9 },
-	{ name = "book page", chance = 10000, maxCount = 6 },
-	{ name = "small amethyst", chance = 10000, maxCount = 8 },
-	{ name = "glowing rune", chance = 10000, maxCount = 3 },
-	{ name = "quill", chance = 10000, maxCount = 3 },
-	{ name = "silken bookmark", chance = 10000, maxCount = 3 },
-	{ name = "flash arrow", chance = 10000, maxCount = 6 },
-	{ name = "throwing star", chance = 10000, maxCount = 10 },
-	{ name = "crystal sword", chance = 10000 },
-	{ id = 3051, chance = 10000 }, -- energy ring
-	{ name = "guardian shield", chance = 10000 },
-	{ name = "mana potion", chance = 10000, maxCount = 10 },
-	{ name = "ultimate mana potion", chance = 10000, maxCount = 8 },
-	{ name = "ultimate health potion", chance = 10000, maxCount = 8 },
-	{ name = "wand of cosmic energy", chance = 300 },
+	{ name = "small amethyst", chance = 6319, maxCount = 6 },
+	{ name = "glowing rune", chance = 13630, maxCount = 9 },
+	{ name = "platinum coin", chance = 9058, maxCount = 3 },
+	{ name = "book page", chance = 13957, maxCount = 5 },
+	{ name = "silken bookmark", chance = 13185, maxCount = 1 },
+	{ name = "quill", chance = 9354, maxCount = 1 },
+	{ name = "ultimate mana potion", chance = 11009, maxCount = 1 },
+	{ name = "guardian shield", chance = 12718, maxCount = 1 },
+	{ name = "flash arrow", chance = 13175, maxCount = 15 },
+	{ name = "throwing star", chance = 7237, maxCount = 10 },
+--	{ name = "energy ring", chance = 11420, maxCount = 1 },
+	{ id = 3051, chance = 11420, maxCount = 1 }, -- energy ring
+	{ name = "mana potion", chance = 10538, maxCount = 1 },
+--	{ name = "crystal ring", chance = 14880, maxCount = 1 },
+	{ id = 3007, chance = 11420, maxCount = 1 }, -- crystal ring
+	{ name = "might ring", chance = 13019, maxCount = 1 },
+	{ name = "wand of cosmic energy", chance = 10276, maxCount = 1 },
+	{ name = "crystal sword", chance = 13747, maxCount = 1 },
+	{ name = "ultimate health potion", chance = 8403, maxCount = 2 },
+	{ name = "obsidian lance", chance = 7919, maxCount = 1 },
+	{ name = "silver amulet", chance = 8503, maxCount = 1 },
+	{ name = "lightning pendant", chance = 11458, maxCount = 1 },
+	{ name = "wand of defiance", chance = 14805, maxCount = 1 },
+	{ name = "spellweaver's robe", chance = 11890, maxCount = 1 },
 }
 
 monster.attacks = {

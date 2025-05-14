@@ -1,0 +1,148 @@
+local mType = Game.createMonsterType("Arbaziloth")
+local monster = {}
+
+monster.description = "Arbaziloth"
+monster.experience = 500000
+monster.outfit = {
+	lookType = 1798,
+	lookHead = 0,
+	lookBody = 0,
+	lookLegs = 0,
+	lookFeet = 0,
+	lookAddons = 0,
+	lookMount = 0,
+}
+
+monster.health = 360000
+monster.maxHealth = 360000
+monster.race = "undead"
+monster.corpse = 50029
+monster.speed = 400
+monster.manaCost = 0
+
+monster.changeTarget = {
+	interval = 10000,
+	chance = 20,
+}
+
+monster.bosstiary = {
+	bossRaceId = 2594,
+	bossRace = RARITY_ARCHFOE,
+}
+
+monster.strategiesTarget = {
+	nearest = 70,
+	health = 10,
+	damage = 10,
+	random = 10,
+}
+
+monster.flags = {
+	summonable = false,
+	attackable = true,
+	hostile = true,
+	convinceable = false,
+	pushable = false,
+	rewardBoss = true,
+	illusionable = false,
+	canPushItems = true,
+	canPushCreatures = true,
+	staticAttackChance = 98,
+	targetDistance = 1,
+	runHealth = 0,
+	healthHidden = false,
+	isBlockable = false,
+	canWalkOnEnergy = true,
+	canWalkOnFire = true,
+	canWalkOnPoison = true,
+}
+
+monster.events = {
+	--"GazHaragothHeal",
+}
+
+monster.light = {
+	level = 0,
+	color = 0,
+}
+
+monster.summon = {}
+
+monster.voices = {
+	interval = 5000,
+	chance = 10,
+{ text = "I am superior!", yell = true },  
+{ text = "You are mad to challenge a demon prince!", yell = true },  
+{ text = "You can't stop me or my plans!", yell = true },  
+{ text = "Pesky humans!", yell = true },  
+{ text = "This insolence!", yell = true },  
+{ text = "Nobody can stop me!", yell = true },  
+{ text = "All will have to bow to me!", yell = true },  
+{ text = "With this power I can crush everyone!", yell = true },  
+{ text = "All that energy is mine!", yell = true },  
+{ text = "Face the power of hell!", yell = true },  
+{ text = "AHHH! THE POWER!!", yell = true },  
+
+}
+
+monster.loot = {
+{ name = "crystal coin", chance = 100000, maxCount = 5 },
+{ id = 3037, chance = 25000, maxcount = 8 }, -- yellow gem
+{ id = 3038, chance = 25000, maxcount = 8 }, -- green gem
+{ id = 3039, chance = 25000, maxcount = 8 }, -- red gem
+{ id = 3041, chance = 25000, maxcount = 8 }, -- blue gem
+{ id = 3036, chance = 15000, maxcount = 3 }, -- violet gem
+{ id = 32769, chance = 15000, maxcount = 3 }, -- white gem
+{ id = 32626, chance = 10000, maxcount = 1 }, -- amber
+{ id = 32625, chance = 10000, maxcount = 1 }, -- amber with a dragonfly
+{ id = 32624, chance = 10000, maxcount = 1 }, -- amber with a bug
+{ id = 32623, chance = 10000, maxcount = 1 }, -- giant topaz
+{ id = 32622, chance = 10000, maxcount = 1 }, -- giant amethyst
+{ id = 30180, chance = 10000, maxcount = 1 }, -- hexagonal ruby
+{ id = 30059, chance = 10000, maxcount = 1 }, -- giant ruby
+{ id = 30060, chance = 10000, maxcount = 1 }, -- giant emerald
+{ id = 30061, chance = 10000, maxcount = 1 }, -- giant sapphire
+{ id = 16242, chance = 1500, maxCount = 2 }, --red teleport crystal
+{ name = "minor crystalline token", chance = 1500, maxCount = 2 },
+		{ id = 50061, chance = 600, maxCount = 1 }, -- demon skull (addon)
+	{ name = "demon claws", chance = 600, maxCount = 1 },--Demon Claws
+	{ name = "demon in a green box", chance = 600, maxCount = 1 },--Demon In A Green Box
+}
+
+monster.attacks = {
+{ name = "melee", interval = 2000, chance = 100, minDamage = -300, maxDamage = -700 }, 
+{ name = "combat", interval = 2000, chance = 40, type = COMBAT_PHYSICALDAMAGE, minDamage = -300, maxDamage = -700, range = 6, radius = 5, effect = CONST_ME_GROUNDSHAKER, target = false },
+{ name = "combat", interval = 2000, chance = 35, type = COMBAT_ENERGYDAMAGE, minDamage = -300, maxDamage = -650, range = 6, radius = 6, effect = CONST_ME_PURPLESMOKE, target = false },
+{ name = "combat", interval = 2000, chance = 45, type = COMBAT_ENERGYDAMAGE, minDamage = -500, maxDamage = -900, range = 8, radius = 1,shootEffect = CONST_ANI_ENERGY, target = true },
+{ name = "combat", interval = 2000, chance = 30, type = COMBAT_DEATHDAMAGE, minDamage = -700, maxDamage = -1500, range = 7, radius = 8,  effect = CONST_ME_SMALLCLOUDS, target = false },
+{ name = "combat", interval = 2000, chance = 100, type = COMBAT_LIFEDRAIN, minDamage = -300, maxDamage = -490, range = 8, radius = 3, effect = CONST_ME_MAGIC_RED, target = false },
+}
+
+monster.defenses = {
+	defense = 0,
+	armor = 0,
+	{ name = "combat", interval = 3000, chance = 35, type = COMBAT_HEALING, minDamage = 2500, maxDamage = 3500, effect = CONST_ME_MAGIC_BLUE, target = false },
+	{ name = "speed", interval = 4000, chance = 80, speedChange = 700, effect = CONST_ME_MAGIC_RED, target = false, duration = 6000 },
+}
+
+monster.elements = {
+	{ type = COMBAT_PHYSICALDAMAGE, percent = 0 },
+	{ type = COMBAT_ENERGYDAMAGE, percent = 0 },
+	{ type = COMBAT_EARTHDAMAGE, percent = 0 },
+	{ type = COMBAT_FIREDAMAGE, percent = 0 },
+	{ type = COMBAT_LIFEDRAIN, percent = 0 },
+	{ type = COMBAT_MANADRAIN, percent = 0 },
+	{ type = COMBAT_DROWNDAMAGE, percent = 0 },
+	{ type = COMBAT_ICEDAMAGE, percent = 0 },
+	{ type = COMBAT_HOLYDAMAGE, percent = 0 },
+	{ type = COMBAT_DEATHDAMAGE, percent = 0 },
+}
+
+monster.immunities = {
+	{ type = "paralyze", condition = true },
+	{ type = "outfit", condition = false },
+	{ type = "invisible", condition = true },
+	{ type = "bleed", condition = false },
+}
+
+mType:register(monster)

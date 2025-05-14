@@ -75,33 +75,35 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "violet crystal shard", chance = 900, maxCount = 4 },
-	{ name = "platinum coin", chance = 100000, maxCount = 12 },
-	{ name = "glowing rune", chance = 900, maxCount = 4 },
-	{ name = "instable proto matter", chance = 1200, maxCount = 4 },
-	{ name = "energy ball", chance = 1200, maxCount = 4 },
-	{ name = "energy bar", chance = 1200, maxCount = 4 },
-	{ name = "energy drink", chance = 1200, maxCount = 4 },
-	{ name = "odd organ", chance = 1200, maxCount = 4 },
-	{ name = "frozen lightning", chance = 1200, maxCount = 4 },
-	{ id = 28568, chance = 1200, maxCount = 3 }, -- inkwell
-	{ name = "small ruby", chance = 1200, maxCount = 4 },
-	{ name = "violet gem", chance = 1200, maxCount = 4 },
-	{ name = "blue crystal splinter", chance = 1200, maxCount = 4 },
-	{ name = "cyan crystal fragment", chance = 1200, maxCount = 4 },
-	{ name = "ultimate mana potion", chance = 1200, maxCount = 4 },
-	{ name = "piece of dead brain", chance = 1200, maxCount = 4 },
-	{ name = "wand of defiance", chance = 800 },
-	{ name = "lightning headband", chance = 950 },
-	{ name = "lightning pendant", chance = 850 },
-	{ name = "might ring", chance = 1300 },
-	{ name = "slime heart", chance = 1200, maxCount = 4 },
-	{ id = 23544, chance = 560 }, -- collar of red plasma
-	{ id = 23542, chance = 560 }, -- collar of blue plasma
-	{ id = 23543, chance = 560 }, -- collar of green plasma
-	{ id = 23533, chance = 560 }, -- ring of red plasma
-	{ id = 23529, chance = 560 }, -- ring of blue plasma
-	{ id = 23531, chance = 560 }, -- ring of green plasma
+	{ name = "platinum coin", chance = 7218, maxCount = 8 },
+	--{ name = "inkwell (black)", chance = 11037, maxCount = 1 },
+	{ id = 28568, chance = 11037, maxCount = 1 }, -- inkwell
+	{ name = "energy bar", chance = 13946, maxCount = 1 },
+	{ name = "instable proto matter", chance = 11650, maxCount = 1 },
+	{ name = "ultimate mana potion", chance = 9904, maxCount = 1 },
+	{ name = "violet crystal shard", chance = 9859, maxCount = 2 },
+	{ name = "energy ball", chance = 10937, maxCount = 1 },
+	{ name = "energy drink", chance = 8973, maxCount = 1 },
+	{ name = "glowing rune", chance = 12552, maxCount = 2 },
+	{ name = "odd organ", chance = 6719, maxCount = 1 },
+	{ id = 23529, chance = 14212, maxCount = 1 }, -- ring of blue plasma
+	{ id = 23531, chance = 7460, maxCount = 1 }, -- ring of green plasma
+	{ name = "blue crystal splinter", chance = 10795, maxCount = 1 },
+	{ name = "frozen lightning", chance = 10197, maxCount = 1 },
+	{ name = "lightning headband", chance = 6368, maxCount = 1 },
+	{ name = "violet gem", chance = 11590, maxCount = 1 },
+	{ name = "wand of defiance", chance = 8928, maxCount = 1 },
+	{ name = "small ruby", chance = 7169, maxCount = 6 },
+	{ name = "cyan crystal fragment", chance = 5737, maxCount = 1 },
+	{ id = 23533, chance = 7025, maxCount = 1 }, -- ring of red plasma
+	{ name = "might ring", chance = 11187, maxCount = 1 },
+	{ name = "lightning pendant", chance = 12898, maxCount = 1 },
+	{ id = 23544, chance = 6222, maxCount = 1 }, -- collar of red plasma
+	{ name = "slime heart", chance = 9910, maxCount = 1 },
+	{ id = 23542, chance = 10300, maxCount = 1 }, -- collar of blue plasma
+	{ name = "piece of dead brain", chance = 13800, maxCount = 1 },
+	{ id = 23543, chance = 7684, maxCount = 1 }, -- collar of green plasma
+	{ name = "spellweaver's robe", chance = 7598, maxCount = 1 },
 }
 
 monster.attacks = {

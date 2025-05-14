@@ -77,7 +77,7 @@ monster.loot = {
 	{ id = 3026, chance = 100000 }, -- white pearl
 	{ id = 5909, chance = 100000 }, -- white piece of cloth
 	{ id = 3286, chance = 37500 }, -- mace
-	{ id = 19369, chance = 200, unique = true }, -- eye of the storm
+	{ id = 19369, chance = 1, unique = true }, -- eye of the storm
 	{ id = 3441, chance = 37570 }, -- bone shield
 	{ id = 7381, chance = 25050 }, -- mammoth whopper
 	{ id = 7441, chance = 62570 }, -- ice cube

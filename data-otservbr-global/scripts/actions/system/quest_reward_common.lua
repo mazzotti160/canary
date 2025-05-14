@@ -56,7 +56,7 @@ local achievementTable = {
 	[6088] = "Annihilator",
 }
 
-local function playerAddItem(params, item, rewardIndex)
+local function playerAddItem(params, item)
 	local player = params.player
 	if not checkWeightAndBackpackRoom(player, params.weight, params.message) then
 		return false
@@ -92,11 +92,6 @@ local function playerAddItem(params, item, rewardIndex)
 			player:questKV(params.questName):set("params.questName", os.time() + params.time * 3600) -- multiplicação por hora
 		end
 	else
-		if params.storage == nil then
-			logger.warn("Storage key is nil for reward index {}, itemid {}", rewardIndex, params.itemid)
-			return false
-		end
-
 		player:setStorageValue(params.storage, 1)
 		if params.timer then
 			player:setStorageValue(params.timer, os.time() + params.time * 3600) -- multiplicação por hora
@@ -105,7 +100,7 @@ local function playerAddItem(params, item, rewardIndex)
 	return true
 end
 
-local function playerAddContainerItem(params, item, rewardIndex)
+local function playerAddContainerItem(params, item)
 	local player = params.player
 
 	local reward = params.containerReward
@@ -135,11 +130,6 @@ local function playerAddContainerItem(params, item, rewardIndex)
 			player:questKV(params.questName):set("params.questName", os.time() + params.time * 3600) -- multiplicação por hora
 		end
 	else
-		if params.storage == nil then
-			logger.warn("Storage key is nil for reward index {}, itemid {} in container", rewardIndex, params.itemid)
-			return false
-		end
-
 		player:setStorageValue(params.storage, 1)
 		if params.timer then
 			player:setStorageValue(params.timer, os.time() + params.time * 3600) -- multiplicação por hora
@@ -233,7 +223,7 @@ function questReward.onUse(player, item, fromPosition, itemEx, toPosition)
 			else
 				addItemParams.message = "You have found " .. itemArticle .. " " .. itemName
 			end
-			if not playerAddItem(addItemParams, item, i) then
+			if not playerAddItem(addItemParams, item) then
 				return true
 			end
 		end
@@ -252,7 +242,7 @@ function questReward.onUse(player, item, fromPosition, itemEx, toPosition)
 				useKV = setting.useKV,
 			}
 
-			if not playerAddContainerItem(addContainerItemParams, item, i) then
+			if not playerAddContainerItem(addContainerItemParams, item) then
 				return true
 			end
 		end

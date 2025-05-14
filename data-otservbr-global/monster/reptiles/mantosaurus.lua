@@ -85,6 +85,7 @@ monster.loot = {
 	{ id = 3007, chance = 1430 }, -- Crystal Ring
 	{ name = "Gold Ring", chance = 1370 },
 	{ name = "Amulet of Loss", chance = 170 },
+		{ name = "primal bag", chance = 1 },	
 }
 
 monster.attacks = {

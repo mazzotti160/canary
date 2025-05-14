@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Morgaroth")
 local monster = {}
 
 monster.description = "Morgaroth"
-monster.experience = 15000
+monster.experience = 15000000
 monster.outfit = {
 	lookType = 12,
 	lookHead = 2,
@@ -18,12 +18,16 @@ monster.bosstiary = {
 	bossRace = RARITY_NEMESIS,
 }
 
-monster.health = 55000
-monster.maxHealth = 55000
+monster.health = 1200000
+monster.maxHealth = 1200000
 monster.race = "fire"
 monster.corpse = 6068
 monster.speed = 305
 monster.manaCost = 0
+
+monster.events = {
+	"BossRoomReward",
+}
 
 monster.changeTarget = {
 	interval = 10000,
@@ -49,7 +53,7 @@ monster.flags = {
 	canPushCreatures = true,
 	staticAttackChance = 98,
 	targetDistance = 1,
-	runHealth = 100,
+	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = true,
@@ -79,12 +83,39 @@ monster.voices = {
 }
 
 monster.loot = {
+--custom craft loot
+        { id = 16206, chance = 9000, maxCount = 3 }, -- abyssador lash
+        { id = 16136, chance = 9000, maxCount = 3 }, -- deathstrike snippet
+        { id = 16205, chance = 9000, maxCount = 3 }, -- gnomevil hat
+        { id = 27621, chance = 9000, maxCount = 3 }, -- huge shell
+        { id = 27627, chance = 9000, maxCount = 3 }, -- huge spiky snail shell
+        { id = 27619, chance = 9000, maxCount = 3 }, -- giant tentacle
+        { id = 36796, chance = 9000, maxCount = 2 }, -- brainstealer brainwave
+        { id = 36795, chance = 9000, maxCount = 2 }, -- brainstealer brain
+        { id = 36794, chance = 9000, maxCount = 2 }, -- brainstealer tissue
+        { id = 39040, chance = 9000, maxCount = 1 },  -- fiery tear
+        { id = 39543, chance = 9000, maxCount = 1 },  -- smoldering eye
+        { id = 33928, chance = 9000, maxCount = 1 },  -- megalomania essence
+        { id = 33925, chance = 9000, maxCount = 1 },  -- megalomania skull
+        { id = 43968, chance = 9000, maxCount = 1 },   -- bakragore amalgamation
+		{ id = 37341, chance = 500},  --skulls
+		{ id = 37340, chance = 500},  --skulls
+		{ id = 37339, chance = 500},  --skulls
+		{ id = 37338, chance = 500},  --skulls
+		{ id = 37337, chance = 500},  --skulls
+		{ id = 37335, chance = 500},  --skulls	
+        { id = 3423, chance = 200}, -- blessed shield
+		{ id = 3246, chance = 200}, -- boots of waterwalking
+		{ id = 3363, chance = 200}, -- dragon scale legs
+		{ id = 3402, chance = 200}, -- native armor
+		{ id = 3365, chance = 200}, -- golden helmet		
+--end
 	{ name = "platinum coin", chance = 95000, maxCount = 74 },
 	{ name = "demonic essence", chance = 95000, maxCount = 5 },
 	{ name = "green gem", chance = 50000 },
 	{ name = "great mana potion", chance = 45000 },
 	{ name = "small amethyst", chance = 36000, maxCount = 18 },
-	{ name = "devileye", chance = 36000 },
+	{ name = "devileye", chance = 1200 },
 	{ name = "small emerald", chance = 27000, maxCount = 7 },
 	{ name = "small sapphire", chance = 27000, maxCount = 9 },
 	{ name = "red tome", chance = 27000 },
@@ -93,8 +124,8 @@ monster.loot = {
 	{ name = "demon horn", chance = 22000, maxCount = 2 },
 	{ id = 6299, chance = 22000 }, -- death ring
 	{ id = 3098, chance = 22000 }, -- ring of healing
-	{ name = "chain bolter", chance = 22000 },
-	{ name = "dark lord's cape", chance = 22000 },
+	{ name = "chain bolter", chance = 1200 },
+	{ name = "dark lord's cape", chance = 1200 },
 	{ name = "ironworker", chance = 25000 },
 	{ name = "double axe", chance = 18000 },
 	{ name = "great spirit potion", chance = 18000 },
@@ -103,7 +134,7 @@ monster.loot = {
 	{ name = "mind stone", chance = 18000 },
 	{ id = 3049, chance = 18000 }, -- stealth ring
 	{ name = "fireborn giant armor", chance = 18000 },
-	{ name = "royal crossbow", chance = 18000 },
+	{ name = "royal crossbow", chance = 1600 },
 	{ name = "teddy bear", chance = 18000 },
 	{ name = "white pearl", chance = 13000, maxCount = 11 },
 	{ name = "black pearl", chance = 13000, maxCount = 13 },
@@ -124,29 +155,33 @@ monster.loot = {
 	{ name = "orb", chance = 9000 },
 	{ name = "strange symbol", chance = 9000 },
 	{ name = "steel boots", chance = 9000 },
-	{ name = "thunder hammer", chance = 9000 },
+	{ name = "thunder hammer", chance = 1200 },
 	{ name = "small diamond", chance = 4500, maxCount = 5 },
 	{ id = 3007, chance = 4500 }, -- crystal ring
 	{ name = "fire axe", chance = 4500 },
 	{ name = "great health potion", chance = 4500 },
 	{ name = "mastermind shield", chance = 4500 },
 	{ name = "dragon robe", chance = 4500 },
-	{ name = "molten plate", chance = 4500 },
+	{ name = "molten plate", chance = 1200 },
 	{ name = "great shield", chance = 500 },
 }
 
 monster.attacks = {
-	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -2250 },
-	{ name = "combat", interval = 3000, chance = 35, type = COMBAT_FIREDAMAGE, minDamage = -500, maxDamage = -1210, range = 7, radius = 7, shootEffect = CONST_ANI_FIRE, effect = CONST_ME_FIREAREA, target = true },
-	{ name = "combat", interval = 1800, chance = 40, type = COMBAT_PHYSICALDAMAGE, minDamage = 0, maxDamage = -580, range = 7, radius = 5, effect = CONST_ME_HITAREA, target = false },
-	{ name = "combat", interval = 3000, chance = 30, type = COMBAT_ENERGYDAMAGE, minDamage = -300, maxDamage = -1450, length = 8, spread = 3, effect = CONST_ME_ENERGYHIT, target = false },
-	{ name = "combat", interval = 2500, chance = 20, type = COMBAT_PHYSICALDAMAGE, minDamage = -200, maxDamage = -480, range = 7, radius = 5, effect = CONST_ME_MAGIC_GREEN, target = false },
-	{ name = "combat", interval = 2000, chance = 15, type = COMBAT_PHYSICALDAMAGE, minDamage = -250, maxDamage = -500, range = 7, radius = 13, effect = CONST_ME_SOUND_RED, target = false },
-	{ name = "combat", interval = 2000, chance = 20, type = COMBAT_PHYSICALDAMAGE, minDamage = -200, maxDamage = -450, radius = 14, effect = CONST_ME_LOSEENERGY, target = false },
-	{ name = "combat", interval = 3000, chance = 15, type = COMBAT_PHYSICALDAMAGE, minDamage = -100, maxDamage = -200, range = 7, radius = 3, effect = CONST_ME_MAGIC_BLUE, target = false },
-	{ name = "speed", interval = 2000, chance = 15, speedChange = -400, range = 7, effect = CONST_ME_SOUND_RED, target = false, duration = 20000 },
-	{ name = "combat", interval = 2000, chance = 15, type = COMBAT_MANADRAIN, minDamage = -70, maxDamage = -320, radius = 3, effect = CONST_ME_HITAREA, target = true },
-	{ name = "dark torturer skill reducer", interval = 2000, chance = 5, target = false },
+	{ name = "melee", interval = 2000, chance = 100, minDamage = -2300, maxDamage = -3500, attack = 130 },
+--FISICO UE	
+	{ name = "combat", interval = 2000, chance = 36, type = COMBAT_PHYSICALDAMAGE, minDamage = -4000, maxDamage = -6000, radius = 8, effect = CONST_ME_EXPLOSIONAREA, target = false },		
+--UE TERRA CONST_ME_PLANTATTACK
+	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_EARTHDAMAGE, minDamage = -1500, maxDamage = -2250, radius = 7, effect = CONST_ME_PLANTATTACK, target = false },	
+--UE MORTE -- CONST_ME_REAPER
+	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_DEATHDAMAGE, minDamage = -1500, maxDamage = -2250, radius = 7, effect = CONST_ME_REAPER, target = false },	
+--UE VIS -- CONST_ME_ELECTRICALSPARK
+	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_ENERGYDAMAGE, minDamage = -1500, maxDamage = -2250, radius = 7, effect = CONST_ME_ELECTRICALSPARK, target = false },	
+--UE FLAM -- CONST_ME_FIREAREA
+	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_FIREDAMAGE, minDamage = -1500, maxDamage = -2250, radius = 7, effect = CONST_ME_FIREAREA, target = false },	
+--UE HOLY -- CONST_ME_DIVINE_DAZZLE
+	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_HOLYDAMAGE, minDamage = -1500, maxDamage = -2250, radius = 7, effect = CONST_ME_DIVINE_DAZZLE, target = false },	
+--UE ICE CONST_ME_GIANTICE
+	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_ICEDAMAGE, minDamage = -1500, maxDamage = -2250, radius = 7, effect = CONST_ME_GIANTICE, target = false },	
 }
 
 monster.defenses = {
@@ -159,16 +194,16 @@ monster.defenses = {
 }
 
 monster.elements = {
-	{ type = COMBAT_PHYSICALDAMAGE, percent = 50 },
-	{ type = COMBAT_ENERGYDAMAGE, percent = 80 },
-	{ type = COMBAT_EARTHDAMAGE, percent = 100 },
-	{ type = COMBAT_FIREDAMAGE, percent = 100 },
+	{ type = COMBAT_PHYSICALDAMAGE, percent = 0 },
+	{ type = COMBAT_ENERGYDAMAGE, percent = 0 },
+	{ type = COMBAT_EARTHDAMAGE, percent = 0 },
+	{ type = COMBAT_FIREDAMAGE, percent = 0 },
 	{ type = COMBAT_LIFEDRAIN, percent = 0 },
 	{ type = COMBAT_MANADRAIN, percent = 0 },
 	{ type = COMBAT_DROWNDAMAGE, percent = 0 },
-	{ type = COMBAT_ICEDAMAGE, percent = -5 },
-	{ type = COMBAT_HOLYDAMAGE, percent = -5 },
-	{ type = COMBAT_DEATHDAMAGE, percent = 80 },
+	{ type = COMBAT_ICEDAMAGE, percent = 0 },
+	{ type = COMBAT_HOLYDAMAGE, percent = 0 },
+	{ type = COMBAT_DEATHDAMAGE, percent = 0 },
 }
 
 monster.immunities = {

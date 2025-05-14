@@ -53,7 +53,7 @@ monster.flags = {
 	canPushItems = true,
 	canPushCreatures = true,
 	staticAttackChance = 90,
-	targetDistance = 3,
+	targetDistance = 1,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
@@ -87,6 +87,7 @@ monster.loot = {
 	{ name = "Gold Ring", chance = 600 },
 	{ name = "Green Gem", chance = 420 },
 	{ name = "Ring of the Sky", chance = 210 },
+		{ name = "primal bag", chance = 1 },	
 }
 
 monster.attacks = {
@@ -95,7 +96,7 @@ monster.attacks = {
 	{ name = "combat", interval = 3500, chance = 30, type = COMBAT_DEATHDAMAGE, minDamage = -500, maxDamage = -700, radius = 6, effect = CONST_ME_MORTAREA, target = false },
 	{ name = "energy chain", interval = 2000, chance = 20, minDamage = -425, maxDamage = -550, range = 3, target = true },
 	{ name = "combat", interval = 3000, chance = 30, type = COMBAT_ENERGYDAMAGE, minDamage = -700, maxDamage = -1000, length = 5, spread = 2, effect = CONST_ME_SOUND_PURPLE, target = false },
-	{ name = "fear", interval = 2000, chance = 1, target = true },
+	--{ name = "fear", interval = 2000, chance = 1, target = true },
 }
 
 monster.defenses = {

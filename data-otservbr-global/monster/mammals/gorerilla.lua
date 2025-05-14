@@ -53,7 +53,7 @@ monster.flags = {
 	canPushItems = true,
 	canPushCreatures = true,
 	staticAttackChance = 90,
-	targetDistance = 3,
+	targetDistance = 1,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
@@ -84,6 +84,7 @@ monster.loot = {
 	{ name = "Crystal Crossbow", chance = 110 },
 	{ name = "Composite Hornbow", chance = 30 },
 	{ name = "Ornate Crossbow", chance = 30 },
+	{ name = "primal bag", chance = 1 },		
 }
 
 monster.attacks = {

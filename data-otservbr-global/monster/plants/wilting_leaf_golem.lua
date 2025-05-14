@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Wilting Leaf Golem")
 local monster = {}
 
 monster.description = "a wilting leaf golem"
-monster.experience = 225
+monster.experience = 145
 monster.outfit = {
 	lookType = 573,
 	lookHead = 0,
@@ -30,7 +30,7 @@ monster.health = 380
 monster.maxHealth = 380
 monster.race = "blood"
 monster.corpse = 19117
-monster.speed = 74
+monster.speed = 205
 monster.manaCost = 390
 
 monster.changeTarget = {

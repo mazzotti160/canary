@@ -53,7 +53,7 @@ monster.flags = {
 	canPushItems = true,
 	canPushCreatures = true,
 	staticAttackChance = 90,
-	targetDistance = 3,
+	targetDistance = 1,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
@@ -86,6 +86,7 @@ monster.loot = {
 	{ name = "Wand of Cosmic Energy", chance = 860 },
 	{ name = "Gemmed Figurine", chance = 830 },
 	{ name = "Butterfly Ring", chance = 800 },
+		{ name = "primal bag", chance = 1 },	
 }
 
 monster.attacks = {

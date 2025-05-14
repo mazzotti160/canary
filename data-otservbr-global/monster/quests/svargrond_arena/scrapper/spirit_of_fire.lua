@@ -17,7 +17,7 @@ monster.health = 2210
 monster.maxHealth = 2210
 monster.race = "blood"
 monster.corpse = 7349
-monster.speed = 110
+monster.speed = 205
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -69,7 +69,7 @@ monster.loot = {}
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -300 },
 	{ name = "firefield", interval = 1000, chance = 15, range = 7, radius = 4, shootEffect = CONST_ANI_FIRE, target = true },
-	{ name = "combat", interval = 1000, chance = 20, type = COMBAT_FIREDAMAGE, minDamage = -50, maxDamage = -300, range = 7, shootEffect = CONST_ANI_FIRE, target = false },
+	{ name = "combat", interval = 1000, chance = 20, type = COMBAT_FIREDAMAGE, minDamage = -650, maxDamage = -315, range = 7, shootEffect = CONST_ANI_FIRE, target = false },
 }
 
 monster.defenses = {

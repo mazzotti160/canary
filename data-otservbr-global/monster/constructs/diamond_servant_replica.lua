@@ -14,7 +14,7 @@ monster.outfit = {
 }
 
 monster.events = {
-	"ReplicaServantDeath",
+	--"ReplicaServantDeath",
 }
 
 monster.raceId = 1326
@@ -58,7 +58,7 @@ monster.flags = {
 	canPushCreatures = true,
 	staticAttackChance = 90,
 	targetDistance = 1,
-	runHealth = 100,
+	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = true,

@@ -53,7 +53,7 @@ monster.flags = {
 	canPushItems = true,
 	canPushCreatures = true,
 	staticAttackChance = 90,
-	targetDistance = 2,
+	targetDistance = 1,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
@@ -86,6 +86,7 @@ monster.loot = {
 	{ id = 23533, chance = 1110 }, -- Ring of Red Plasma
 	{ name = "Fire Sword", chance = 770 },
 	{ name = "Crystal Crossbow", chance = 510 },
+	{ name = "primal bag", chance = 1 },	
 }
 
 monster.attacks = {

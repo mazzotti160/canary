@@ -66,16 +66,17 @@ local DAILY_REWARD_STATUS_FREE = 0
 local DAILY_REWARD_STATUS_PREMIUM = 1
 
 local DailyRewardItems = {
-	[0] = { 266, 268 }, -- God/no vocation character
-	[VOCATION.BASE_ID.PALADIN] = { 266, 236, 268, 237, 7642, 23374, 3203, 3161, 3178, 3153, 3197, 3149, 3164, 3200, 3192, 3188, 3190, 3189, 3191, 3158, 3152, 3180, 3173, 3176, 3195, 3175, 3155, 3202 },
-	[VOCATION.BASE_ID.DRUID] = { 266, 268, 237, 238, 23373, 3203, 3161, 3178, 3153, 3197, 3149, 3164, 3200, 3192, 3188, 3190, 3189, 3156, 3191, 3158, 3152, 3180, 3173, 3176, 3195, 3175, 3155, 3202 },
-	[VOCATION.BASE_ID.SORCERER] = { 266, 268, 237, 238, 23373, 3203, 3161, 3178, 3153, 3197, 3149, 3164, 3200, 3192, 3188, 3190, 3189, 3191, 3158, 3152, 3180, 3173, 3176, 3195, 3175, 3155, 3202 },
-	[VOCATION.BASE_ID.KNIGHT] = { 266, 236, 239, 7643, 23375, 268, 3203, 3161, 3178, 3153, 3197, 3149, 3164, 3200, 3192, 3188, 3190, 3189, 3191, 3158, 3152, 3180, 3173, 3176, 3195, 3175, 3155, 3202 },
+	--[0] = { 266, 268 }, -- God/no vocation character
+	[VOCATION.BASE_ID.NONE] = { 266, 268 },
+	[VOCATION.BASE_ID.PALADIN] = { 28552, 28553, 28554, 28555, 28556, 28557, 44065 },
+	[VOCATION.BASE_ID.DRUID] = { 28552, 28553, 28554, 28555, 28556, 28557, 44065 },
+	[VOCATION.BASE_ID.SORCERER] = { 28552, 28553, 28554, 28555, 28556, 28557, 44065 },
+	[VOCATION.BASE_ID.KNIGHT] = { 28552, 28553, 28554, 28555, 28556, 28557, 44065 },
 }
 
 DailyReward = {
 	testMode = false,
-	serverTimeThreshold = (25 * 60 * 60), -- Counting down 24hours from last server save
+	serverTimeThreshold = (24 * 60 * 60), -- Counting down 24hours from last server save
 
 	storages = {
 		-- Player
@@ -105,48 +106,46 @@ DailyReward = {
 	rewards = {
 		-- day
 		[1] = {
-			type = DAILY_REWARD_TYPE_ITEM,
-			systemType = DAILY_REWARD_SYSTEM_TYPE_ONE,
-			freeAccount = 5,
-			premiumAccount = 10,
+			type = DAILY_REWARD_TYPE_XP_BOOST,
+			systemType = DAILY_REWARD_SYSTEM_TYPE_TWO,
+			freeAccount = 60,
+			premiumAccount = 60,
 		},
 		[2] = {
-			type = DAILY_REWARD_TYPE_ITEM,
-			systemType = DAILY_REWARD_SYSTEM_TYPE_ONE,
-			freeAccount = 5,
-			premiumAccount = 10,
+			type = DAILY_REWARD_TYPE_PREY_REROLL,
+			systemType = DAILY_REWARD_SYSTEM_TYPE_TWO,
+			freeAccount = 4,
+			premiumAccount = 4,
 		},
 		[3] = {
 			type = DAILY_REWARD_TYPE_PREY_REROLL,
 			systemType = DAILY_REWARD_SYSTEM_TYPE_TWO,
-			freeAccount = 1,
-			premiumAccount = 2,
+			freeAccount = 4,
+			premiumAccount = 4,
 		},
 		[4] = {
-			type = DAILY_REWARD_TYPE_ITEM,
-			systemType = DAILY_REWARD_SYSTEM_TYPE_ONE,
-			freeAccount = 10,
-			premiumAccount = 20,
+			type = DAILY_REWARD_TYPE_XP_BOOST,
+			systemType = DAILY_REWARD_SYSTEM_TYPE_TWO,
+			freeAccount = 60,
+			premiumAccount = 60,
 		},
 		[5] = {
 			type = DAILY_REWARD_TYPE_PREY_REROLL,
 			systemType = DAILY_REWARD_SYSTEM_TYPE_TWO,
-			freeAccount = 1,
-			premiumAccount = 2,
+			freeAccount = 5,
+			premiumAccount = 5,
 		},
 		[6] = {
-			type = DAILY_REWARD_TYPE_ITEM,
-			systemType = DAILY_REWARD_SYSTEM_TYPE_ONE,
-			items = { 28540, 28541, 28542, 28543, 28544, 28545, 44064 },
-			freeAccount = 1,
-			premiumAccount = 2,
-			itemCharges = 50,
+			type = DAILY_REWARD_TYPE_PREY_REROLL,
+			systemType = DAILY_REWARD_SYSTEM_TYPE_TWO,
+			freeAccount = 5,
+			premiumAccount = 5,
 		},
 		[7] = {
 			type = DAILY_REWARD_TYPE_XP_BOOST,
 			systemType = DAILY_REWARD_SYSTEM_TYPE_TWO,
-			freeAccount = 10,
-			premiumAccount = 30,
+			freeAccount = 60,
+			premiumAccount = 60,
 		},
 		-- Storage reward template
 		--[[[5] = {
@@ -304,22 +303,26 @@ DailyReward.init = function(playerId)
 	end
 
 	local timeMath = GetDailyRewardLastServerSave() - player:getNextRewardTime()
-	if player:getNextRewardTime() < GetDailyRewardLastServerSave() then
-		if player:getStorageValue(DailyReward.storages.notifyReset) ~= GetDailyRewardLastServerSave() then
-			player:setStorageValue(DailyReward.storages.notifyReset, GetDailyRewardLastServerSave())
-			timeMath = math.ceil(timeMath / DailyReward.serverTimeThreshold)
-			if player:getJokerTokens() >= timeMath then
-				player:setJokerTokens(player:getJokerTokens() - timeMath)
-				player:sendTextMessage(MESSAGE_LOGIN, "You lost " .. timeMath .. " joker tokens to prevent loosing your streak.")
-			else
-				player:setStreakLevel(0)
-				if player:getLastLoginSaved() > 0 then -- message wont appear at first character login
-					player:setJokerTokens(-(player:getJokerTokens()))
-					player:sendTextMessage(MESSAGE_LOGIN, "You just lost your daily reward streak.")
-				end
-			end
-		end
-	end
+if player:getNextRewardTime() < GetDailyRewardLastServerSave() then
+    if player:getStorageValue(DailyReward.storages.notifyReset) ~= GetDailyRewardLastServerSave() then
+        player:setStorageValue(DailyReward.storages.notifyReset, GetDailyRewardLastServerSave())
+        timeMath = math.ceil(timeMath / DailyReward.serverTimeThreshold)
+
+        if not player:isVip() then
+            if player:getJokerTokens() >= timeMath then
+                player:setJokerTokens(player:getJokerTokens() - timeMath)
+                player:sendTextMessage(MESSAGE_LOGIN, "You lost " .. timeMath .. " joker tokens to prevent losing your streak.")
+            else
+                player:setStreakLevel(0)
+                if player:getLastLoginSaved() > 0 then -- message won't appear at first character login
+                    player:setJokerTokens(-(player:getJokerTokens()))
+                    player:sendTextMessage(MESSAGE_LOGIN, "Because your are not, you just lost your daily reward streak.")
+                end
+            end
+        end
+    end
+end
+
 
 	-- Daily reward golden icon
 	if DailyReward.isRewardTaken(player:getId()) then

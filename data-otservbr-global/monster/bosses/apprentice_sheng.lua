@@ -20,6 +20,11 @@ monster.corpse = 5981
 monster.speed = 85
 monster.manaCost = 0
 
+monster.bosstiary = {
+	bossRaceId = 309,
+	bossRace = RARITY_ARCHFOE,
+}
+
 monster.changeTarget = {
 	interval = 5000,
 	chance = 8,
@@ -43,8 +48,8 @@ monster.flags = {
 	canPushItems = true,
 	canPushCreatures = true,
 	staticAttackChance = 90,
-	targetDistance = 4,
-	runHealth = 20,
+	targetDistance = 1,
+	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = true,

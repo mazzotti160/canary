@@ -17,7 +17,7 @@ monster.health = 8500
 monster.maxHealth = 8500
 monster.race = "blood"
 monster.corpse = 0
-monster.speed = 125
+monster.speed = 205
 monster.manaCost = 0
 
 monster.faction = FACTION_LION
@@ -110,17 +110,5 @@ monster.immunities = {
 	{ type = "invisible", condition = true },
 	{ type = "bleed", condition = false },
 }
-
-mType.onSpawn = function(monster, spawnPosition)
-	for i = 1, 5 do
-		local sum = Game.createMonster(monster:getType():getSummonList()[math.random(1, #monster:getType():getSummonList())].name, monster:getPosition(), true)
-		if sum then
-			monster:setSummon(sum)
-			sum:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-			sum:setStorageValue(Storage.TheOrderOfTheLion.Drume.Commander, 1)
-		end
-	end
-	monster:setStorageValue(Storage.TheOrderOfTheLion.Drume.Commander, 1)
-end
 
 mType:register(monster)

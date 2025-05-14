@@ -31,15 +31,6 @@ TeleportItemAction = {
 			{ x = 32974, y = 32226, z = 7 },
 		},
 	},
-	[15004] = {
-		itemId = false,
-		itemPos = {
-			{ x = 33060, y = 32713, z = 5 },
-			{ x = 33060, y = 32714, z = 5 },
-			{ x = 33061, y = 32713, z = 5 },
-			{ x = 33061, y = 32714, z = 5 },
-		},
-	},
 	-- Deeper fibula draw well
 	-- Path: data\scripts\quests\deeper_fibula\action-draw_well.lua
 	[15005] = {
@@ -128,12 +119,12 @@ TeleportItemAction = {
 			{ x = 32780, y = 32684, z = 14 },
 		},
 	},
-	[24873] = {
-		itemId = 10842,
-		itemPos = {
-			{ x = 32906, y = 32846, z = 13 },
-		},
-	},
+	--[24873] = {
+		--itemId = 10842,
+		--itemPos = {
+	---		{ x = 32906, y = 32846, z = 13 },
+	--	},
+	--},
 	[26668] = {
 		itemId = 1949,
 		itemPos = {
@@ -162,10 +153,4 @@ TeleportItemUnique = {
 		effect = CONST_ME_TELEPORT,
 	},
 	-- Faceless Bane entrance
-	[15004] = {
-		itemId = 29954,
-		itemPos = { x = 33619, y = 32518, z = 15 },
-		destination = { x = 33640, y = 32561, z = 13 },
-		effect = CONST_ME_TELEPORT,
-	},
 }

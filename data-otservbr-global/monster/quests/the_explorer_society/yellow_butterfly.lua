@@ -14,7 +14,7 @@ monster.outfit = {
 	lookMount = 0,
 }
 
-monster.raceId = 235
+monster.raceId = 227
 monster.Bestiary = {
 	class = "Vermin",
 	race = BESTY_RACE_VERMIN,
@@ -58,7 +58,7 @@ monster.flags = {
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 6,
-	runHealth = 2,
+	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = false,

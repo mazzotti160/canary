@@ -54,7 +54,7 @@ monster.flags = {
 
 monster.events = {
 	"ThornKnightDeath",
-	"HealthForgotten",
+	--"HealthForgotten",
 }
 
 monster.light = {

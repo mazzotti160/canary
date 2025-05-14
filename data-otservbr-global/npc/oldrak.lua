@@ -90,6 +90,10 @@ keywordHandler:addKeyword({ "buy" }, StdModule.say, { npcHandler = npcHandler, t
 keywordHandler:addKeyword({ "have" }, StdModule.say, { npcHandler = npcHandler, text = "I can offer you the holy tible for a small fee." })
 keywordHandler:addKeyword({ "time" }, StdModule.say, { npcHandler = npcHandler, text = "Now, it is |TIME|." })
 
+npcConfig.shop = {
+	{ itemName = "hallowed axe", clientId = 919, buy = 100 },
+}
+
 local function creatureSayCallback(npc, creature, type, message)
 	local player = Player(creature)
 	local playerId = player:getId()

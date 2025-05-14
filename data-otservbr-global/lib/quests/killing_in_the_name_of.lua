@@ -898,6 +898,24 @@ tasks = {
 				{ type = "storage", value = { 41300, 1 } },
 			},
 		},
+	--abaixo custom
+			[43] = {
+			killsRequired = 100,
+			raceName = "Stonerefiners",
+			level = { 6, 20000 },
+			--rank = RANK_ELITEHUNTER,
+			repeatable = true,
+			premium = true,
+			creatures = {
+				"stonerefiner",
+			},
+			rewards = {
+				{ type = "item", value = { 3043, 1 } },
+				{ type = "exp", value = { 100000 } },
+				--{ type = "storage", value = { 41300, 1 } },
+			},
+		},
+	--acima custom
 	},
 }
 

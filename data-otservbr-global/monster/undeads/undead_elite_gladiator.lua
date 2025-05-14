@@ -103,7 +103,7 @@ monster.defenses = {
 	defense = 45,
 	armor = 85,
 	mitigation = 2.40,
-	{ name = "invisible", interval = 2000, chance = 15, effect = CONST_ME_MAGIC_BLUE },
+	--{ name = "invisible", interval = 2000, chance = 15, effect = CONST_ME_MAGIC_BLUE },
 }
 
 monster.elements = {

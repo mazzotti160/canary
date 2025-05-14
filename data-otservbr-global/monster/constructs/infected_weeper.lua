@@ -83,6 +83,7 @@ monster.voices = {
 }
 
 monster.loot = {
+	{ name = "minor crystalline token", chance = 650, maxCount = 5 },	
 	{ name = "gold coin", chance = 100000, maxCount = 198 },
 	{ name = "platinum coin", chance = 100000, maxCount = 7 },
 	{ id = 12600, chance = 1460 }, -- coal

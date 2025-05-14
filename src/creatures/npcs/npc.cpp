@@ -444,12 +444,11 @@ void Npc::onPlayerSellAllLoot(uint32_t playerId, uint16_t itemId, bool ignore, u
 		if (!container) {
 			return;
 		}
-		bool hasMore = false;
 		uint64_t toSellCount = 0;
+		uint64_t batchTotalPrice = 0; // Total price for the current batch
 		phmap::flat_hash_map<uint16_t, uint16_t> toSell;
 		for (ContainerIterator it = container->iterator(); it.hasNext(); it.advance()) {
-			if (toSellCount >= 500) {
-				hasMore = true;
+			if (toSellCount >= 250) {
 				break;
 			}
 			const auto &item = *it;
@@ -464,24 +463,19 @@ void Npc::onPlayerSellAllLoot(uint32_t playerId, uint16_t itemId, bool ignore, u
 			}
 		}
 		for (const auto &[m_itemId, amount] : toSell) {
-			onPlayerSellItem(player, m_itemId, 0, amount, ignore, totalPrice, container);
+			onPlayerSellItem(player, m_itemId, 0, amount, ignore, batchTotalPrice, container);
 		}
+		totalPrice += batchTotalPrice; // Add the batch total price to the overall total price
 		auto ss = std::stringstream();
 		if (totalPrice == 0) {
 			ss << "You have no items in your loot pouch.";
 			player->sendTextMessage(MESSAGE_TRANSACTION, ss.str());
 			return;
 		}
-		if (hasMore) {
-			g_dispatcher().scheduleEvent(
-				SCHEDULER_MINTICKS, [this, playerId = player->getID(), itemId, ignore, totalPrice] { onPlayerSellAllLoot(playerId, itemId, ignore, totalPrice); }, __FUNCTION__
-			);
-			return;
-		}
-		ss << "You sold all of the items from your loot pouch for ";
-		ss << totalPrice << " gold.";
+		ss << "You sold some of the items from your loot pouch for ";
+		ss << totalPrice << " gold. You have reached the limit of 250 items per transaction.";
 		player->sendTextMessage(MESSAGE_TRANSACTION, ss.str());
-		player->openPlayerContainers();
+		// player->openPlayerContainers();
 	}
 }
 

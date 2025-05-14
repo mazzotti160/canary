@@ -49,9 +49,9 @@ local vocation = {}
 local town = {}
 local config = {
 	towns = {
-		["venore"] = TOWNS_LIST.VENORE,
+	--	["venore"] = TOWNS_LIST.VENORE,
 		["thais"] = TOWNS_LIST.THAIS,
-		["carlin"] = TOWNS_LIST.CARLIN,
+	--	["carlin"] = TOWNS_LIST.CARLIN,
 	},
 	vocations = {
 		["sorcerer"] = {
@@ -106,7 +106,8 @@ local function creatureSayCallback(npc, creature, type, message)
 
 	if npcHandler:getTopic(playerId) == 0 then
 		if MsgContains(message, "yes") then
-			npcHandler:say("IN WHICH TOWN DO YOU WANT TO LIVE: {CARLIN}, {THAIS}, OR {VENORE}?", npc, creature)
+		--	npcHandler:say("IN WHICH TOWN DO YOU WANT TO LIVE: {CARLIN}, {THAIS}, OR {VENORE}?", npc, creature)
+		npcHandler:say("IN WHICH TOWN DO YOU WANT TO LIVE: {THAIS}?", npc, creature)
 			npcHandler:setTopic(playerId, 1)
 		end
 	elseif npcHandler:getTopic(playerId) == 1 then
@@ -117,7 +118,8 @@ local function creatureSayCallback(npc, creature, type, message)
 			{KNIGHT}, {PALADIN}, {SORCERER}, OR {DRUID}?", npc, creature)
 			npcHandler:setTopic(playerId, 2)
 		else
-			npcHandler:say("IN WHICH TOWN DO YOU WANT TO LIVE: {CARLIN}, {THAIS}, OR {VENORE}?", npc, creature)
+		--	npcHandler:say("IN WHICH TOWN DO YOU WANT TO LIVE: {CARLIN}, {THAIS}, OR {VENORE}?", npc, creature)
+				npcHandler:say("IN WHICH TOWN DO YOU WANT TO LIVE: {THAIS}?", npc, creature)
 		end
 	elseif npcHandler:getTopic(playerId) == 2 then
 		local vocationTable = config.vocations[message:lower()]
@@ -134,7 +136,7 @@ local function creatureSayCallback(npc, creature, type, message)
 			player:setVocation(Vocation(vocation[playerId]))
 			player:setTown(Town(town[playerId]))
 			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-			player:teleportTo(Town(town[playerId]):getTemplePosition())
+			player:teleportTo(Position(32143, 32247, 7))
 			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 		else
 			npcHandler:say("THEN WHAT? {KNIGHT}, {PALADIN}, {SORCERER}, OR {DRUID}?", npc, creature)

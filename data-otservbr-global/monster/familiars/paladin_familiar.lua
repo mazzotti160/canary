@@ -1,4 +1,4 @@
-local mType = Game.createMonsterType("Paladin familiar")
+local mType = Game.createMonsterType("Paladin Familiar")
 local monster = {}
 
 monster.description = "a paladin familiar"
@@ -43,7 +43,7 @@ monster.flags = {
 	canPushItems = false,
 	canPushCreatures = true,
 	staticAttackChance = 90,
-	targetDistance = 2,
+	targetDistance = 1,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,

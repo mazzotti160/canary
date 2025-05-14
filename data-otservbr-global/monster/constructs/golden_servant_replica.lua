@@ -14,7 +14,7 @@ monster.outfit = {
 }
 
 monster.events = {
-	"ReplicaServantDeath",
+	--"ReplicaServantDeath",
 }
 
 monster.raceId = 1327
@@ -34,7 +34,7 @@ monster.health = 2000
 monster.maxHealth = 2000
 monster.race = "venom"
 monster.corpse = 12495
-monster.speed = 105
+monster.speed = 205
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -58,7 +58,7 @@ monster.flags = {
 	canPushCreatures = true,
 	staticAttackChance = 90,
 	targetDistance = 1,
-	runHealth = 80,
+	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = true,

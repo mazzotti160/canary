@@ -56,7 +56,7 @@ monster.flags = {
 	canPushItems = true,
 	canPushCreatures = true,
 	staticAttackChance = 90,
-	targetDistance = 4,
+	targetDistance = 1,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
@@ -86,6 +86,7 @@ monster.voices = {
 monster.loot = {
 	{ name = "gold coin", chance = 100000, maxCount = 197 },
 	{ name = "platinum coin", chance = 100000, maxCount = 7 },
+	{ name = "minor crystalline token", chance = 650, maxCount = 5 },	
 	{ name = "war hammer", chance = 4010 },
 	{ name = "white piece of cloth", chance = 6430 },
 	{ name = "green piece of cloth", chance = 3003 },

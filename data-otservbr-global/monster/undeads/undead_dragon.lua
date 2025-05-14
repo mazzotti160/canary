@@ -32,7 +32,7 @@ monster.health = 8350
 monster.maxHealth = 8350
 monster.race = "undead"
 monster.corpse = 6305
-monster.speed = 165
+monster.speed = 205
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -133,7 +133,7 @@ monster.elements = {
 	{ type = COMBAT_LIFEDRAIN, percent = 0 },
 	{ type = COMBAT_MANADRAIN, percent = 0 },
 	{ type = COMBAT_DROWNDAMAGE, percent = 100 },
-	{ type = COMBAT_ICEDAMAGE, percent = 90 },
+	{ type = COMBAT_ICEDAMAGE, percent = 10 },
 	{ type = COMBAT_HOLYDAMAGE, percent = -25 },
 	{ type = COMBAT_DEATHDAMAGE, percent = 100 },
 }

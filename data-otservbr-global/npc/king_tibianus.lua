@@ -83,7 +83,7 @@ local function creatureSayCallback(npc, creature, type, message)
 			npcHandler:setTopic(playerId, 0)
 			-- Inicio do outfit
 		elseif npcHandler:getTopic(playerId) == 3 then -- ARMOR/OUTFIT
-			if player:getStorageValue(Storage.Quest.U12_15.GoldenOutfits) < 1 then
+			if player:getStorageValue(Storage.OutfitQuest.GoldenOutfit) < 1 then
 				if player:getMoney() + player:getBankBalance() >= 500000000 then
 					local inbox = player:getStoreInbox()
 					local inboxItems = inbox:getItems()
@@ -97,7 +97,7 @@ local function creatureSayCallback(npc, creature, type, message)
 						player:addOutfit(1211)
 						player:addOutfit(1210)
 						player:getPosition():sendMagicEffect(171)
-						player:setStorageValue(Storage.Quest.U12_15.GoldenOutfits, 1)
+						player:setStorageValue(Storage.OutfitQuest.GoldenOutfit, 1)
 					else
 						npcHandler:say("Please make sure you have free slots in your store inbox.", npc, creature)
 					end
@@ -111,15 +111,15 @@ local function creatureSayCallback(npc, creature, type, message)
 			-- Fim do outfit
 			-- Inicio do helmet
 		elseif npcHandler:getTopic(playerId) == 4 then
-			if player:getStorageValue(Storage.Quest.U12_15.GoldenOutfits) == 1 then
-				if player:getStorageValue(Storage.Quest.U12_15.GoldenOutfits) < 2 then
+			if player:getStorageValue(Storage.OutfitQuest.GoldenOutfit) == 1 then
+				if player:getStorageValue(Storage.OutfitQuest.GoldenOutfit) < 2 then
 					if player:getMoney() + player:getBankBalance() >= 250000000 then
 						npcHandler:say("Take this helmet as a token of great gratitude. Let us forever remember this day, my friend. ", npc, creature)
 						player:removeMoneyBank(250000000)
 						player:addOutfitAddon(1210, 2)
 						player:addOutfitAddon(1211, 2)
 						player:getPosition():sendMagicEffect(171)
-						player:setStorageValue(Storage.Quest.U12_15.GoldenOutfits, 2)
+						player:setStorageValue(Storage.OutfitQuest.GoldenOutfit, 2)
 						npcHandler:setTopic(playerId, 2)
 					else
 						npcHandler:say("You do not have enough money to donate that amount.", npc, creature)
@@ -137,15 +137,15 @@ local function creatureSayCallback(npc, creature, type, message)
 			-- Fim do helmet
 			-- Inicio da boots
 		elseif npcHandler:getTopic(playerId) == 5 then
-			if player:getStorageValue(Storage.Quest.U12_15.GoldenOutfits) == 2 then
-				if player:getStorageValue(Storage.Quest.U12_15.GoldenOutfits) < 3 then
+			if player:getStorageValue(Storage.OutfitQuest.GoldenOutfit) == 2 then
+				if player:getStorageValue(Storage.OutfitQuest.GoldenOutfit) < 3 then
 					if player:getMoney() + player:getBankBalance() >= 250000000 then
 						npcHandler:say("Take this boots as a token of great gratitude. Let us forever remember this day, my friend. ", npc, creature)
 						player:removeMoneyBank(250000000)
 						player:addOutfitAddon(1210, 1)
 						player:addOutfitAddon(1211, 1)
 						player:getPosition():sendMagicEffect(171)
-						player:setStorageValue(Storage.Quest.U12_15.GoldenOutfits, 3)
+						player:setStorageValue(Storage.OutfitQuest.GoldenOutfit, 3)
 						npcHandler:setTopic(playerId, 2)
 					else
 						npcHandler:say("You do not have enough money to donate that amount.", npc, creature)
@@ -211,9 +211,9 @@ keywordHandler:addKeyword({ "eremo" }, StdModule.say, {
 	npcHandler = npcHandler,
 	text = "It is said that he lives on a small island near Edron. Maybe the people there know more about him.",
 })
-keywordHandler:addKeyword({ "otbr" }, StdModule.say, {
+keywordHandler:addKeyword({ "mazot" }, StdModule.say, {
 	npcHandler = npcHandler,
-	text = "Awesome! Please pay a visit to www.otserv.com.br!",
+	text = "Awesome! Please pay a visit to www.mazot.com.br!",
 })
 keywordHandler:addKeyword({ "baah" }, StdModule.say, {
 	npcHandler = npcHandler,

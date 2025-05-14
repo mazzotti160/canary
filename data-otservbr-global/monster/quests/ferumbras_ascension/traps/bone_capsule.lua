@@ -53,7 +53,7 @@ monster.flags = {
 }
 
 monster.events = {
-	"BoneCapsule",
+	--"BoneCapsule",
 }
 
 monster.light = {

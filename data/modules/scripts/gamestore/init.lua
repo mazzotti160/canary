@@ -35,7 +35,14 @@ GameStore.OfferTypes = {
 	OFFER_TYPE_HUNTINGSLOT = 25,
 	OFFER_TYPE_ITEM_BED = 26,
 	OFFER_TYPE_ITEM_UNIQUE = 27,
-}
+    OFFER_TYPE_NPC_ACCESS = 28, -- New NPC Access Offer Type
+	OFFER_TYPE_REGEN7 = 29,
+	OFFER_TYPE_REGEN30 = 30,
+	OFFER_TYPE_POT1 = 31,
+	OFFER_TYPE_POT2 = 32,
+	OFFER_TYPE_POT3 = 33,
+
+}	
 
 GameStore.SubActions = {
 	PREY_THIRDSLOT_REAL = 0,
@@ -180,11 +187,11 @@ GameStore.RecivedPackets = {
 }
 
 GameStore.ExpBoostValues = {
-	[1] = 30,
-	[2] = 45,
-	[3] = 90,
-	[4] = 180,
-	[5] = 360,
+	[1] = 50,
+	[2] = 50,
+	[3] = 50,
+	[4] = 50,
+	[5] = 50,
 }
 
 GameStore.DefaultValues = {
@@ -207,7 +214,7 @@ GameStore.DefaultDescriptions = {
 }
 
 GameStore.ItemLimit = {
-	PREY_WILDCARD = 50,
+	PREY_WILDCARD = 500,
 	INSTANT_REWARD_ACCESS = 90,
 	EXPBOOST = 6,
 	HIRELING = 10,
@@ -410,6 +417,8 @@ local function insertPlayerTransactionSummary(player, offer)
 	player:createTransactionSummary(offer.type, math.max(1, offer.count or 1), id)
 end
 
+
+
 function parseBuyStoreOffer(playerId, msg)
 	local player = Player(playerId)
 	local id = msg:getU32()
@@ -418,6 +427,13 @@ function parseBuyStoreOffer(playerId, msg)
 	if not offer then
 		return false
 	end
+	
+	--access here
+	    if offer.type == GameStore.OfferTypes.OFFER_TYPE_NPC_ACCESS then
+        GameStore.processNpcAccessPurchase(player)
+        return true
+    end
+	--end here
 
 	-- All guarding conditions under which the offer should not be processed must be included here
 	if
@@ -440,6 +456,14 @@ function parseBuyStoreOffer(playerId, msg)
 			and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_HIRELING_SEXCHANGE
 			and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_HIRELING_SKILL
 			and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_HIRELING_OUTFIT
+			and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_NPC_ACCESS
+			and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_HPMP	
+			and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_REGEN7
+			and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_REGEN30			
+			and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_UNIQUE	
+			and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_POT1
+			and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_POT2
+			and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_POT3		
 			and not offer.id
 		)
 	then
@@ -511,7 +535,22 @@ function parseBuyStoreOffer(playerId, msg)
 			GameStore.processHirelingSkillPurchase(player, offer)
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_HIRELING_OUTFIT then
 			GameStore.processHirelingOutfitPurchase(player, offer)
+	--POT 123		
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_POT1 then
+			GameStore.processPot1(player, offer)			
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_POT2 then
+			GameStore.processPot2(player, offer)			
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_POT3 then
+			GameStore.processPot3(player, offer)
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_REGEN7 then
+			GameStore.processRegen7(player, offer)		
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_REGEN30 then
+			GameStore.processRegen30(player, offer)				
+			-- edit abaixo
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_NPC_ACCESS then
+			GameStore.processNpcAccessPurchase(player, offer)
 		else
+			--else // aqui vai o else no end edit
 			-- This should never happen by our convention, but just in case the guarding condition is messed up...
 			error({ code = 0, message = "This offer is unavailable [2]" })
 		end
@@ -640,6 +679,7 @@ function openStore(playerId)
 end
 
 function sendOfferDescription(player, offerId, description)
+
 	local msg = NetworkMessage()
 	msg:addByte(0xEA)
 	msg:addU32(offerId)
@@ -649,6 +689,7 @@ end
 
 function Player.canBuyOffer(self, offer)
 	local disabled, disabledReason = 0, ""
+	local kv_regen_expiry = self:kv():get("buff-regen")
 	if offer.disabled or not offer.type then
 		disabled = 1
 	end
@@ -663,6 +704,12 @@ function Player.canBuyOffer(self, offer)
 		and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_SEXCHANGE
 		and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_HIRELING_SKILL
 		and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_HIRELING_OUTFIT
+		and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_NPC_ACCESS
+		and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_POT1
+		and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_POT2
+		and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_POT3
+		and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_REGEN7
+		and offer.type ~= GameStore.OfferTypes.OFFER_TYPE_REGEN30
 		and not offer.id
 	then
 		disabled = 1
@@ -792,6 +839,51 @@ function Player.canBuyOffer(self, offer)
 				disabled = 1
 				disabledReason = "You need to have a hireling."
 			end
+-- START POT BUFF 			
+-- POT BUFF 1
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_POT1 then
+    -- Desabilitar se o storage value for igual ou superior a 1
+			if self:getStorageValue(4535656514) >= 1 then
+				disabled = 1
+				disabledReason = "You already have this buff."
+			end
+
+-- POT BUFF 2
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_POT2 then
+    -- Desabilitar se o storage value não for igual a 1
+			if self:getStorageValue(4535656514) > 1 then
+				disabled = 1
+				disabledReason = "You already have this buff."
+			elseif self:getStorageValue(4535656514) < 1 then
+				disabled = 1
+				disabledReason = "You need buff pot 1 first."
+			end
+
+-- POT BUFF 3
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_POT3 then
+    -- Desabilitar se o storage value não for igual a 2
+			if self:getStorageValue(4535656514) > 2 then
+				disabled = 1
+				disabledReason = "You already have this buff."
+			elseif self:getStorageValue(4535656514) < 2 then
+				disabled = 1
+				disabledReason = "You need buff pot 2 first."
+			end
+-- end pot	
+-- START REGENS BOOST 
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_REGEN7 then
+    -- Desabilitar se o storage value não for igual a 2
+			if kv_regen_expiry and kv_regen_expiry >= os.time() then
+				disabled = 1
+				disabledReason = "You already have boosted regeneration."
+			end
+		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_REGEN30 then
+    -- Desabilitar se o storage value não for igual a 2
+			if kv_regen_expiry and kv_regen_expiry >= os.time() then
+				disabled = 1
+				disabledReason = "You already have boosted regeneration."
+			end			
+-- END REGENS BOOST		
 		end
 	end
 
@@ -1487,74 +1579,67 @@ GameStore.canChangeToName = function(name)
 	local result = {
 		ability = false,
 	}
-
-	if name:len() < 3 or name:len() > 29 then
-		result.reason = "The length of your new name must be between 3 and 29 characters."
+	if name:len() < 3 or name:len() > 18 then
+		result.reason = "The length of your new name must be between 3 and 18 characters."
 		return result
 	end
 
 	local match = name:gmatch("%s+")
 	local count = 0
-	for _ in match do
+	for v in match do
 		count = count + 1
 	end
 
 	local matchtwo = name:match("^%s+")
 	if matchtwo then
-		result.reason = "Your new name can't have whitespace at the beginning."
+		result.reason = "Your new name can't have whitespace at begin."
 		return result
 	end
 
-	if count > 2 then
-		result.reason = "Your new name can't have more than 2 spaces."
-		return result
-	end
-
-	if name:match("%s%s") then
-		result.reason = "Your new name can't have consecutive spaces."
+	if count > 1 then
+		result.reason = "Your new name have more than 1 whitespace."
 		return result
 	end
 
 	-- just copied from znote aac.
 	local words = { "owner", "gamemaster", "hoster", "admin", "staff", "tibia", "account", "god", "anal", "ass", "fuck", "sex", "hitler", "pussy", "dick", "rape", "adm", "cm", "gm", "tutor", "counsellor" }
 	local split = name:split(" ")
-	for _, word in ipairs(words) do
-		for _, nameWord in ipairs(split) do
+	for k, word in ipairs(words) do
+		for k, nameWord in ipairs(split) do
 			if nameWord:lower() == word then
-				result.reason = "You can't use the word '" .. word .. "' in your new name."
+				result.reason = "You can't use word \"" .. word .. '" in your new name.'
 				return result
 			end
 		end
 	end
 
 	local tmpName = name:gsub("%s+", "")
-	for _, word in ipairs(words) do
-		if tmpName:lower():find(word) then
-			result.reason = "You can't use the word '" .. word .. "' even with spaces in your new name."
+	for i = 1, #words do
+		if tmpName:lower():find(words[i]) then
+			result.reason = "You can't use word \"" .. words[i] .. '" with whitespace in your new name.'
 			return result
 		end
 	end
 
 	if MonsterType(name) then
-		result.reason = "Your new name '" .. name .. "' can't be a monster's name."
+		result.reason = 'Your new name "' .. name .. "\" can't be a monster's name."
 		return result
 	elseif Npc(name) then
-		result.reason = "Your new name '" .. name .. "' can't be an NPC's name."
+		result.reason = 'Your new name "' .. name .. "\" can't be a npc's name."
 		return result
 	end
 
 	local letters = "{}|_*+-=<>0123456789@#%^&()/*'\\.,:;~!\"$"
 	for i = 1, letters:len() do
 		local c = letters:sub(i, i)
-		for j = 1, name:len() do
-			local m = name:sub(j, j)
+		for i = 1, name:len() do
+			local m = name:sub(i, i)
 			if m == c then
-				result.reason = "You can't use this character '" .. c .. "' in your new name."
+				result.reason = "You can't use this letter \"" .. c .. '" in your new name.'
 				return result
 			end
 		end
 	end
-
 	result.ability = true
 	return result
 end
@@ -1564,6 +1649,17 @@ end
 -- Must throw an error when the purchase has not been made. The error must of
 -- take a table {code = ..., message = ...} if the error is handled. When no code
 -- index is present the error is assumed to be unhandled.
+
+--function access here
+function GameStore.processNpcAccessPurchase(player)
+    if player:getStorageValue(459104654501) ~= 1 then
+        player:setStorageValue(459104654501, 1)
+        return player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You bought access to talk with NPC Lootseller!")
+    else
+        return player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You already bought this offer!")
+    end
+end
+--access end
 
 function GameStore.processItemPurchase(player, offerId, offerCount, movable, setOwner)
 	local canReceive, errorMsg = player:canReceiveStoreItems(offerId, offerCount)
@@ -1775,12 +1871,15 @@ end
 function GameStore.processExpBoostPurchase(player)
 	local currentXpBoostTime = player:getXpBoostTime()
 	local expBoostCount = player:getStorageValue(GameStore.Storages.expBoostCount)
+
 	player:setXpBoostPercent(50)
 	player:setXpBoostTime(currentXpBoostTime + 3600)
 
-	if expBoostCount == -1 or expBoostCount == 0 or expBoostCount > 5 then
+	if expBoostCount == -1 or expBoostCount == 6 then
 		expBoostCount = 1
 	end
+
+	player:setStorageValue(GameStore.Storages.expBoostCount, expBoostCount + 1)
 end
 
 function GameStore.processPreyThirdSlot(player)
@@ -1808,15 +1907,45 @@ end
 function GameStore.processTempleTeleportPurchase(player)
 	local inPz = player:getTile():hasFlag(TILESTATE_PROTECTIONZONE)
 	local inFight = player:isPzLocked() or player:getCondition(CONDITION_INFIGHT, CONDITIONID_DEFAULT)
-	if not inPz and inFight then
-		return error({ code = 0, message = "You can't use temple teleport in fight!" })
-	end
-
 	player:teleportTo(player:getTown():getTemplePosition())
 	player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have been teleported to your hometown.")
 end
+-- PROCESS POTS E REGEN
+function GameStore.processPot1(player)
+		player:setStorageValue(4535656514, 1)
+		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You bought 1st potions buff.")
+end
 
+function GameStore.processPot2(player)
+		player:setStorageValue(4535656514, 2)
+		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You bought 2nd potions buff.")
+end
+
+function GameStore.processPot3(player)
+		player:setStorageValue(4535656514, 3)
+		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You bought 3rd and last potions buff.")
+end
+
+function GameStore.processRegen7(player)
+	local kv_regen_expiry = player:kv():get("buff-regen")
+	local seven_days = 7 * 24 * 60 * 60
+		player:kv():set("buff-regen", os.time() + seven_days)
+		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You bought 7 days of boosted regeneration.")
+end
+function GameStore.processRegen30(player)
+	local kv_regen_expiry = player:kv():get("buff-regen")
+	local seven_days = 30 * 24 * 60 * 60
+		player:kv():set("buff-regen", os.time() + seven_days)
+		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You bought 30 days of boosted regeneration.")
+end
+
+-- PROCESS POTS REGEN END
 function GameStore.processHirelingPurchase(player, offer, productType, hirelingName, chosenSex)
 	if player:getClient().version < 1200 then
 		return error({ code = 1, message = "You cannot buy hirelings on client 10, please relog on client 12 and try again." })
@@ -2060,28 +2189,6 @@ function Player.makeCoinTransaction(self, offer, desc)
 		desc = offer.name .. " (" .. desc .. ")"
 	else
 		desc = offer.name
-	end
-
-	if offer.Type == GameStore.OfferTypes.OFFER_TYPE_EXPBOOST or GameStore.OfferTypes.OFFER_TYPE_EXPBOOSTCUSTOM then
-		local expBoostCount = self:getStorageValue(GameStore.Storages.expBoostCount)
-
-		if expBoostCount == -1 or expBoostCount == 0 or expBoostCount > 5 then
-			expBoostCount = 1
-		end
-		if expBoostCount <= 1 then
-			offer.price = GameStore.ExpBoostValues[1]
-		elseif expBoostCount == 2 then
-			offer.price = GameStore.ExpBoostValues[2]
-		elseif expBoostCount == 3 then
-			offer.price = GameStore.ExpBoostValues[3]
-		elseif expBoostCount == 4 then
-			offer.price = GameStore.ExpBoostValues[4]
-		elseif expBoostCount == 5 then
-			offer.price = GameStore.ExpBoostValues[5]
-		else
-			offer.price = offer.price
-		end
-		self:setStorageValue(GameStore.Storages.expBoostCount, expBoostCount + 1)
 	end
 
 	if offer.coinType == GameStore.CoinType.Coin and self:canRemoveCoins(offer.price) then

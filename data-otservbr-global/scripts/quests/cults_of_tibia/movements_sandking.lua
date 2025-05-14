@@ -7,7 +7,7 @@ function sandking.onStepIn(creature, item, position, fromPosition)
 
 	if creature:getName():lower() == "the sandking" then
 		item:remove()
-		creature:addHealth(math.random(100, 1000))
+		creature:addHealth(math.random(100, 100))
 	end
 	return true
 end

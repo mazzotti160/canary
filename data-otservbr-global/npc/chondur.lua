@@ -325,7 +325,7 @@ npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 npcConfig.shop = {
 	{ itemName = "black skull", clientId = 9056, sell = 4000 },
 	{ itemName = "blood goblet", clientId = 8531, sell = 10000 },
-	{ itemName = "blood herb", clientId = 3734, sell = 500 },
+	--{ itemName = "blood herb", clientId = 3734, sell = 500 },
 	{ itemName = "enigmatic voodoo skull", clientId = 5669, sell = 4000 },
 	{ itemName = "mysterious voodoo skull", clientId = 5668, sell = 4000 },
 }

@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Forest Fury")
 local monster = {}
 
 monster.description = "a forest fury"
-monster.experience = 330
+monster.experience = 235
 monster.outfit = {
 	lookType = 569,
 	lookHead = 0,
@@ -30,7 +30,7 @@ monster.health = 480
 monster.maxHealth = 480
 monster.race = "blood"
 monster.corpse = 19042
-monster.speed = 110
+monster.speed = 205
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -56,7 +56,7 @@ monster.flags = {
 	canPushItems = true,
 	canPushCreatures = true,
 	staticAttackChance = 80,
-	targetDistance = 4,
+	targetDistance = 1,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
