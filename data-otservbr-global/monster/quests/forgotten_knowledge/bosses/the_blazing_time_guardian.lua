@@ -14,7 +14,7 @@ monster.outfit = {
 }
 
 monster.events = {
-	--"ForgottenKnowledgeBossDeath",
+	"ForgottenKnowledgeBossDeath",
 }
 
 monster.health = 150000

@@ -95,7 +95,6 @@ monster.loot = {
 	{ name = "magma boots", chance = 2700 },
 	{ id = 31331, chance = 2400 }, -- empty honey glass
 	{ name = "elven amulet", chance = 2100 },
-		{ id = 31324, chance = 3400 }, -- golden maks
 	{ name = "lightning legs", chance = 2000 },
 	{ name = "lightning headband", chance = 1700 },
 	{ name = "lightning boots", chance = 1400 },

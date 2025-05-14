@@ -77,7 +77,6 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "minor crystalline token", chance = 650, maxCount = 5 },	
 	{ name = "gold coin", chance = 100000, maxCount = 100 },
 	{ name = "gold coin", chance = 100000, maxCount = 98 },
 	{ name = "platinum coin", chance = 95000, maxCount = 7 },

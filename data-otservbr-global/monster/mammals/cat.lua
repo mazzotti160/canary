@@ -31,7 +31,7 @@ monster.health = 20
 monster.maxHealth = 20
 monster.race = "blood"
 monster.corpse = 286
-monster.speed = 205
+monster.speed = 62
 monster.manaCost = 220
 
 monster.changeTarget = {
@@ -55,7 +55,7 @@ monster.flags = {
 	canPushCreatures = false,
 	staticAttackChance = 95,
 	targetDistance = 1,
-	runHealth = 0,
+	runHealth = 8,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = false,

@@ -94,7 +94,6 @@ monster.loot = {
 	{ name = "wand of decay", chance = 1250 },
 	{ name = "wand of everblazing", chance = 1290 },
 	{ name = "golden sickle", chance = 1250 },
-		{ id = 31324, chance = 3400 }, -- golden maks
 	{ name = "relic sword", chance = 1390 },
 	{ name = "war axe", chance = 1777 },
 }

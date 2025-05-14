@@ -17,11 +17,11 @@ monster.health = 70000
 monster.maxHealth = 70000
 monster.race = "undead"
 monster.corpse = 34125
-monster.speed = 205
+monster.speed = 100
 monster.manaCost = 0
 
 monster.events = {
-	--"HazardousPhantomDeath",
+	"HazardousPhantomDeath",
 }
 
 monster.changeTarget = {
@@ -47,7 +47,7 @@ monster.flags = {
 	canPushItems = true,
 	canPushCreatures = false,
 	staticAttackChance = 90,
-	targetDistance = 1,
+	targetDistance = 4,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
@@ -92,7 +92,7 @@ monster.attacks = {
 	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ICEDAMAGE, minDamage = -1050, maxDamage = -1100, radius = 3, effect = CONST_ME_ICETORNADO, target = false },
 	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ICEDAMAGE, minDamage = -1050, maxDamage = -1300, range = 7, radius = 4, effect = CONST_ME_ICEATTACK, target = true },
 	{ name = "ice chain", interval = 2000, chance = 15, minDamage = -1300, maxDamage = -1500, range = 7 },
---	{ name = "soulwars fear", interval = 2000, chance = 2, target = true },
+	{ name = "soulwars fear", interval = 2000, chance = 2, target = true },
 }
 
 monster.defenses = {

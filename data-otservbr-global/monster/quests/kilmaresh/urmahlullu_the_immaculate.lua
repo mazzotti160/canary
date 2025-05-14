@@ -20,6 +20,10 @@ monster.corpse = 0
 monster.speed = 95
 monster.manaCost = 0
 
+monster.events = {
+	"UrmahlulluChanges",
+}
+
 monster.changeTarget = {
 	interval = 4000,
 	chance = 10,
@@ -49,7 +53,7 @@ monster.flags = {
 	canPushCreatures = true,
 	staticAttackChance = 90,
 	targetDistance = 1,
-	runHealth = 0,
+	runHealth = 10,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = true,
@@ -57,9 +61,6 @@ monster.flags = {
 	canWalkOnPoison = true,
 }
 
-monster.events = {
-	"UrmahlulluChanges",
-}
 monster.light = {
 	level = 0,
 	color = 0,

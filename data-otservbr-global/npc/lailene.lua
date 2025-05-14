@@ -59,7 +59,6 @@ npcHandler:setMessage(MESSAGE_SENDTRADE, "Here.")
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
-	{ itemName = "all loot in pouch", clientId = 23721, sell = 1 },
 	{ itemName = "batwing hat", clientId = 9103, sell = 8000 },
 	{ itemName = "ethno coat", clientId = 8064, buy = 750, sell = 200 },
 	{ itemName = "focus cape", clientId = 8043, sell = 6000 },

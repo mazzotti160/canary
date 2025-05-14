@@ -73,7 +73,6 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "primal bag", chance = 1 },	
 	{ name = "Crystal Coin", chance = 35160 },
 	{ name = "Headpecker Beak", chance = 11360 },
 	{ name = "Headpecker Feather", chance = 7620, minCount = 1, maxCount = 5 },

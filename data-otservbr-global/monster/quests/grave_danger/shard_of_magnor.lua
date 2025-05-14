@@ -17,8 +17,12 @@ monster.health = 20000
 monster.maxHealth = 20000
 monster.race = "venom"
 monster.corpse = 0
-monster.speed = 205
+monster.speed = 125
 monster.manaCost = 0
+
+monster.events = {
+	"shard_death",
+}
 
 monster.changeTarget = {
 	interval = 4000,

@@ -94,7 +94,6 @@ monster.loot = {
 	{ name = "opal", chance = 2200, maxCount = 2 },
 	{ name = "wand of voodoo", chance = 2200 },
 	{ id = 31331, chance = 3400 }, -- empty honey glass
-	{ id = 31324, chance = 3400 }, -- golden maks
 	{ name = "small enchanted emerald", chance = 1500, maxCount = 3 },
 }
 

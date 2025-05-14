@@ -241,9 +241,13 @@ uint32_t Container::getWeight() const {
 	return Item::getWeight() + totalWeight;
 }
 
-std::string Container::getContentDescription(bool sendColoredMessage) {
-	std::vector<std::string> descriptions;
+std::string Container::getContentDescription(bool oldProtocol) {
+	std::ostringstream os;
+	return getContentDescription(os, oldProtocol).str();
+}
 
+std::ostringstream &Container::getContentDescription(std::ostringstream &os, bool sendColoredMessage) {
+	bool firstitem = true;
 	for (ContainerIterator it = iterator(); it.hasNext(); it.advance()) {
 		const auto &item = *it;
 		if (!item) {
@@ -255,14 +259,23 @@ std::string Container::getContentDescription(bool sendColoredMessage) {
 			continue;
 		}
 
-		if (sendColoredMessage) {
-			descriptions.push_back(fmt::format("{{{}|{}}}", item->getID(), item->getNameDescription()));
+		if (firstitem) {
+			firstitem = false;
 		} else {
-			descriptions.push_back(item->getNameDescription());
+			os << ", ";
+		}
+
+		if (sendColoredMessage) {
+			os << "{" << item->getID() << "|" << item->getNameDescription() << "}";
+		} else {
+			os << item->getNameDescription();
 		}
 	}
 
-	return descriptions.empty() ? "nothing" : fmt::format("{}", fmt::join(descriptions, ", "));
+	if (firstitem) {
+		os << "nothing";
+	}
+	return os;
 }
 
 uint32_t Container::getMaxCapacity() const {

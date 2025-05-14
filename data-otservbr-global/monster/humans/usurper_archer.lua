@@ -30,7 +30,7 @@ monster.health = 7300
 monster.maxHealth = 7300
 monster.race = "blood"
 monster.corpse = 33981
-monster.speed = 205
+monster.speed = 125
 monster.manaCost = 0
 
 monster.faction = FACTION_LIONUSURPERS
@@ -56,7 +56,7 @@ monster.flags = {
 	canPushItems = true,
 	canPushCreatures = true,
 	staticAttackChance = 90,
-	targetDistance = 1,
+	targetDistance = 4,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,

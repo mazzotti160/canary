@@ -10,19 +10,30 @@ function entrance.onStepIn(creature, item, position, fromPosition)
 		player:teleportTo(DEMON_OAK_KICK_POSITION)
 		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 		return true
-	elseif player:getLevel() < 120 then
+	end
+
+	if player:getLevel() < 120 then
 		player:say("LEAVE LITTLE FISH, YOU ARE NOT WORTH IT!", TALKTYPE_MONSTER_YELL, false, player, DEMON_OAK_POSITION)
 		player:teleportTo(DEMON_OAK_KICK_POSITION)
 		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 		return true
-	elseif player:getItemCount(919) == 0 then
-				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Go talk with Odralk and get the Hallowed Axe to kill The Demon Oak.")		
-				player:teleportTo(DEMON_OAK_KICK_POSITION)
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)		
-				return true		
-		end	
+	end
 
 	if #Game.getSpectators(DEMON_OAK_POSITION, false, true, 9, 9, 6, 6) == 0 then
+		if player:getItemCount(9388) == 0 then
+			if player:getStorageValue(Storage.Quest.U8_2.TheDemonOak.Progress) < 1 then
+				player:say("You need finish the demons task!", TALKTYPE_MONSTER_YELL, false, player, DEMON_OAK_KICK_POSITION)
+				player:teleportTo(DEMON_OAK_KICK_POSITION)
+				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+				return true
+			end
+		end
+
+		if player:getItemCount(919) == 0 then
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Go talk with Odralk and get the Hallowed Axe to kill The Demon Oak.")
+		end
+
+		player:removeItem(9388, 1)
 		player:teleportTo(DEMON_OAK_ENTER_POSITION)
 		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 		player:setStorageValue(Storage.Quest.U8_2.TheDemonOak.Progress, 1)

@@ -3,9 +3,12 @@ local rewards = {
 		storage = Storage.Quest.U9_60.BigfootsBurden.Warzone1Reward,
 		bossName = "Deathstrike",
 		items = {
-			{ itemId = 30060, count = 3 },--giant emerald
-			{ itemId = 3043, count = 50 },--crystal coin
-			{ itemId = 16129, count = 3 },--major
+			{ rand = true, itemId = { 16102, 16233, 16234, 16235 } },
+			{ itemId = 16108, count = 750 },
+			{ itemId = 16102 },
+			{ itemId = 3043, count = 3 },
+			{ itemId = 16121, count = 7 },
+			{ itemId = 16129, count = 2 },
 		},
 		achievement = { "Final Strike", "Death on Strike" },
 	},
@@ -13,9 +16,12 @@ local rewards = {
 		storage = Storage.Quest.U9_60.BigfootsBurden.Warzone2Reward,
 		bossName = "Gnomevil",
 		items = {
-			{ itemId = 30059, count = 3 },--giant ruby
-			{ itemId = 3043, count = 75 },--crystal coin
-			{ itemId = 16129, count = 3 },--major
+			{ rand = true, itemId = { 16237, 16238, 16239 } },
+			{ itemId = 16113, count = 750 },
+			{ itemId = 16102 },
+			{ itemId = 3043, count = 4 },
+			{ itemId = 16119, count = 10 },
+			{ itemId = 16129, count = 2 },
 		},
 		miniatureHouse = true,
 		achievement = { "Gnomebane's Bane", "Fall of the Fallen" },
@@ -24,9 +30,12 @@ local rewards = {
 		storage = Storage.Quest.U9_60.BigfootsBurden.Warzone3Reward,
 		bossName = "Abyssador",
 		items = {
-			{ itemId = 30061, count = 3 },--giant sapphire
-			{ itemId = 3043, count = 100 },--crystal coin
-			{ itemId = 16129, count = 3 },--major
+			{ rand = true, itemId = { 16229, 16230, 16231 } },
+			{ itemId = 16114 },
+			{ itemId = 16102 },
+			{ itemId = 3043, count = 5 },
+			{ itemId = 16120, count = 12 },
+			{ itemId = 16129, count = 2 },
 		},
 		achievement = { "Death from Below", "Diplomatic Immunity" },
 	},

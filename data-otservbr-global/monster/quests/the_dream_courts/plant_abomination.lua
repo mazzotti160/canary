@@ -17,8 +17,12 @@ monster.health = 3900
 monster.maxHealth = 3900
 monster.race = "undead"
 monster.corpse = 0
-monster.speed = 205
+monster.speed = 110
 monster.manaCost = 0
+
+monster.events = {
+	"dreamCourtsDeath",
+}
 
 monster.changeTarget = {
 	interval = 4000,

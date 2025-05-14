@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Orclops Doomhauler")
 local monster = {}
 
 monster.description = "an orclops doomhauler"
-monster.experience = 1450
+monster.experience = 1200
 monster.outfit = {
 	lookType = 934,
 	lookHead = 0,
@@ -30,7 +30,7 @@ monster.health = 1700
 monster.maxHealth = 1700
 monster.race = "blood"
 monster.corpse = 25078
-monster.speed = 205
+monster.speed = 120
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -57,7 +57,7 @@ monster.flags = {
 	canPushCreatures = false,
 	staticAttackChance = 90,
 	targetDistance = 1,
-	runHealth = 0,
+	runHealth = 15,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = false,

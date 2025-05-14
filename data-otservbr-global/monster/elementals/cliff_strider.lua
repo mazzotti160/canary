@@ -30,7 +30,7 @@ monster.health = 9400
 monster.maxHealth = 9400
 monster.race = "undead"
 monster.corpse = 16075
-monster.speed = 205
+monster.speed = 123
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -78,7 +78,6 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "minor crystalline token", chance = 650, maxCount = 5 },	
 	{ name = "white pearl", chance = 9630, maxCount = 3 },
 	{ name = "black pearl", chance = 9090 },
 	{ name = "gold coin", chance = 100000, maxCount = 100 },

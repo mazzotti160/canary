@@ -13,7 +13,7 @@ monster.outfit = {
 	lookMount = 0,
 }
 
-monster.raceId = 2403
+monster.raceId = 2388
 monster.Bestiary = {
 	class = "Lycanthrope",
 	race = BESTY_RACE_LYCANTHROPE,
@@ -30,7 +30,7 @@ monster.health = 5280
 monster.maxHealth = 5280
 monster.race = "blood"
 monster.corpse = 43754
-monster.speed = 205
+monster.speed = 115
 monster.manaCost = 0
 
 monster.changeTarget = {

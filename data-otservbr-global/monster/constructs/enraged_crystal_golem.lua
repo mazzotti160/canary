@@ -30,7 +30,7 @@ monster.health = 700
 monster.maxHealth = 700
 monster.race = "venom"
 monster.corpse = 16176
-monster.speed = 205
+monster.speed = 120
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -79,7 +79,6 @@ monster.voices = {
 
 monster.loot = {
 	{ name = "gold coin", chance = 100000, maxCount = 100 },
-		{ name = "red teleport crystal", chance = 1000, maxCount = 4 },	
 	{ name = "crystal sword", chance = 4710 },
 	{ name = "glorious axe", chance = 360 },
 	{ name = "strong health potion", chance = 7140 },

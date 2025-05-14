@@ -53,7 +53,7 @@ monster.flags = {
 	canPushItems = true,
 	canPushCreatures = true,
 	staticAttackChance = 90,
-	targetDistance = 1,
+	targetDistance = 2,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,
@@ -85,7 +85,6 @@ monster.loot = {
 	{ name = "Green Gem", chance = 1780 },
 	{ name = "Warrior's Axe", chance = 1700 },
 	{ name = "Muck Rod", chance = 1310 },
-	{ name = "primal bag", chance = 1 },	
 }
 
 monster.attacks = {

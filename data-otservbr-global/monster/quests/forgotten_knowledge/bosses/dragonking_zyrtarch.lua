@@ -13,7 +13,6 @@ monster.outfit = {
 	lookMount = 0,
 }
 
-
 monster.health = 150000
 monster.maxHealth = 150000
 monster.race = "fire"
@@ -39,7 +38,7 @@ monster.flags = {
 	hostile = true,
 	convinceable = false,
 	pushable = false,
-	rewardBoss = false,
+	rewardBoss = true,
 	illusionable = false,
 	canPushItems = true,
 	canPushCreatures = true,

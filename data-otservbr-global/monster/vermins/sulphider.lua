@@ -84,7 +84,6 @@ monster.loot = {
 	{ name = "Crown Shield", chance = 1230 },
 	{ name = "Amber Staff", chance = 1150 },
 	{ name = "Amulet of Loss", chance = 850 },
-	{ name = "primal bag", chance = 1 },	
 }
 
 monster.attacks = {

@@ -53,7 +53,7 @@ monster.flags = {
 }
 
 monster.events = {
-	--"MinionGazDeath",
+	"MinionGazDeath",
 }
 
 monster.light = {

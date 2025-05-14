@@ -73,32 +73,30 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "platinum coin", chance = 5444, maxCount = 15 },
-	{ name = "book page", chance = 7230, maxCount = 4 },
-	{ name = "small diamond", chance = 12580, maxCount = 6 },
-	{ name = "silken bookmark", chance = 5012, maxCount = 1 },
-	{ name = "small topaz", chance = 5474, maxCount = 5 },
-	{ name = "small stone", chance = 13538, maxCount = 10 },
-	{ name = "protection amulet", chance = 12966, maxCount = 1 },
-	{ name = "diamond sceptre", chance = 14872, maxCount = 1 },
-	{ name = "terra boots", chance = 7149, maxCount = 1 },
-	{ name = "terra amulet", chance = 12942, maxCount = 1 },
-	{ name = "terra hood", chance = 8068, maxCount = 1 },
-	{ name = "stone skin amulet", chance = 7992, maxCount = 1 },
-	{ name = "sacred tree amulet", chance = 7144, maxCount = 1 },
-	{ name = "terra legs", chance = 13572, maxCount = 1 },
-	{ name = "springsprout rod", chance = 12963, maxCount = 1 },
-	{ name = "terra mantle", chance = 12635, maxCount = 1 },
-	{ name = "swamplair armor", chance = 13366, maxCount = 1 },
---	{ name = "rusty armor", chance = 13811, maxCount = 1 },
-	{ id = 8894, chance = 13811 }, -- rusted armor
+	{ id = 28569, chance = 10000, maxCount = 3 }, -- book page
+	{ name = "platinum coin", chance = 10000, maxCount = 10 },
+	{ id = 28566, chance = 10000, maxCount = 3 }, -- silken bookmark
+	{ name = "small diamond", chance = 10000, maxCount = 7 },
+	{ name = "small stone", chance = 10000, maxCount = 7 },
+	{ name = "small topaz", chance = 10000, maxCount = 7 },
+	{ name = "protection amulet", chance = 10000 },
+	{ name = "terra boots", chance = 350 },
+	{ name = "terra hood", chance = 600 },
+	{ name = "diamond sceptre", chance = 600 },
+	{ name = "terra mantle", chance = 250 },
+	{ name = "terra legs", chance = 250 },
+	{ name = "terra amulet", chance = 500 },
+	{ name = "stone skin amulet", chance = 350 },
+	{ name = "springsprout rod", chance = 350 },
+	{ name = "sacred tree amulet", chance = 350 },
+	{ name = "swamplair armor", chance = 250 },
 }
 
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, minDamage = -100, maxDamage = -200 },
-	{ name = "combat", interval = 1000, chance = 32, type = COMBAT_EARTHDAMAGE, minDamage = -400, maxDamage = -680, range = 7, shootEffect = CONST_ANI_EARTHARROW, target = false },
-	{ name = "combat", interval = 1000, chance = 45, type = COMBAT_LIFEDRAIN, minDamage = -400, maxDamage = -575, length = 5, spread = 0, effect = CONST_ME_POISONAREA, target = false },
-	{ name = "combat", interval = 1000, chance = 38, type = COMBAT_PHYSICALDAMAGE, minDamage = -230, maxDamage = -880, range = 7, radius = 3, effect = CONST_ME_GROUNDSHAKER, target = false },
+	{ name = "combat", interval = 1000, chance = 15, type = COMBAT_PHYSICALDAMAGE, minDamage = -400, maxDamage = -680, range = 7, shootEffect = CONST_ANI_EARTHARROW, target = false },
+	{ name = "combat", interval = 1000, chance = 10, type = COMBAT_LIFEDRAIN, minDamage = -400, maxDamage = -575, length = 5, spread = 0, effect = CONST_ME_POISONAREA, target = false },
+	{ name = "combat", interval = 1000, chance = 12, type = COMBAT_PHYSICALDAMAGE, minDamage = -230, maxDamage = -880, range = 7, radius = 3, effect = CONST_ME_GROUNDSHAKER, target = false },
 }
 
 monster.defenses = {

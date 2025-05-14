@@ -80,8 +80,6 @@ local function creatureSayCallback(npc, creature, type, message)
 					player:removeItem(5903, 1)
 					player:addOutfitAddon(130, 2) -- male mage addon
 					player:addOutfitAddon(141, 2) -- female summoner addon
-					player:addOutfitAddon(130, 1) -- male mage addon
-					player:addOutfitAddon(141, 1) -- female summoner addon					
 					player:getPosition():sendMagicEffect(CONST_ME_MAGIC_RED)
 				else
 					npcHandler:say("Sorry you don't have the Ferumbras' hat.", npc, creature)

@@ -30,7 +30,7 @@ monster.health = 190
 monster.maxHealth = 190
 monster.race = "blood"
 monster.corpse = 14094
-monster.speed = 205
+monster.speed = 65
 monster.manaCost = 0
 
 monster.faction = FACTION_DEEPLING
@@ -60,7 +60,7 @@ monster.flags = {
 	canPushCreatures = true,
 	staticAttackChance = 95,
 	targetDistance = 1,
-	runHealth = 0,
+	runHealth = 20,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = false,

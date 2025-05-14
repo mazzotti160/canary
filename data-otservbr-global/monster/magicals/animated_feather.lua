@@ -73,27 +73,21 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "glowing rune", chance = 11480, maxCount = 5 },
-	{ name = "platinum coin", chance = 11839, maxCount = 21 },
-	{ name = "small sapphire", chance = 13550, maxCount = 12 },
-	{ name = "ultimate mana potion", chance = 7537, maxCount = 2 },
-	--{ name = "ice cube", chance = 8751, maxCount = 1 },
-	{ id = 7441, chance = 8751 }, -- ice cube	
-	{ id = 3051, chance = 7780 }, -- energy ring	
-	--{ name = "energy ring", chance = 7780, maxCount = 1 },
-	{ name = "quill", chance = 5623, maxCount = 1 },
-	{ name = "glacier mask", chance = 6698, maxCount = 1 },
-	{ name = "small diamond", chance = 13075, maxCount = 12 },
-	{ name = "diamond sceptre", chance = 6430, maxCount = 1 },
-	{ name = "life crystal", chance = 6890, maxCount = 1 },
-	{ name = "glacier amulet", chance = 8705, maxCount = 1 },
-	{ name = "crystal mace", chance = 6667, maxCount = 1 },
-	{ name = "golden mug", chance = 8809, maxCount = 1 },
-	{ name = "hailstorm rod", chance = 9595, maxCount = 1 },
-	{ name = "glacial rod", chance = 12602, maxCount = 1 },
-	{ name = "sapphire hammer", chance = 7377, maxCount = 1 },
-	{ name = "leviathan's amulet", chance = 11821, maxCount = 1 },
-	{ name = "crystalline armor", chance = 10092, maxCount = 1 },
+	{ name = "small sapphire", chance = 8700, maxCount = 5 },
+	{ name = "platinum coin", chance = 87000, maxCount = 50 },
+	{ id = 28570, chance = 500, maxCount = 10 }, -- glowing rune
+	{ id = 3051, chance = 8700 }, -- energy ring
+	{ id = 7441, chance = 4000 }, -- ice cube
+	{ name = "shard", chance = 250, maxCount = 3 },
+	{ name = "glacier mask", chance = 250 },
+	{ name = "hailstorm rod", chance = 250 },
+	{ name = "life crystal", chance = 8700 },
+	{ name = "great mana potion", chance = 900, maxCount = 6 },
+	{ name = "golden mug", chance = 500 },
+	{ name = "glowing rune", chance = 500, maxCount = 10 },
+	{ id = 3051, chance = 8700 }, -- energy ring
+	{ name = "quill", chance = 250 },
+	{ name = "small diamond", chance = 500, maxCount = 5 },
 }
 
 monster.attacks = {

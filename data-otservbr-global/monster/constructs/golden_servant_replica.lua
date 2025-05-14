@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Golden Servant Replica")
 local monster = {}
 
 monster.description = "a golden servant replica"
-monster.experience = 1250
+monster.experience = 450
 monster.outfit = {
 	lookType = 396,
 	lookHead = 0,
@@ -14,7 +14,7 @@ monster.outfit = {
 }
 
 monster.events = {
-	--"ReplicaServantDeath",
+	"ReplicaServantDeath",
 }
 
 monster.raceId = 1327
@@ -34,7 +34,7 @@ monster.health = 2000
 monster.maxHealth = 2000
 monster.race = "venom"
 monster.corpse = 12495
-monster.speed = 205
+monster.speed = 105
 monster.manaCost = 0
 
 monster.changeTarget = {
@@ -58,7 +58,7 @@ monster.flags = {
 	canPushCreatures = true,
 	staticAttackChance = 90,
 	targetDistance = 1,
-	runHealth = 0,
+	runHealth = 80,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = true,
@@ -80,7 +80,7 @@ monster.voices = {
 monster.loot = {
 	{ id = 3732, chance = 1450 }, -- green mushroom
 	{ id = 8775, chance = 940 }, -- gear wheel
-	{ id = 3031, chance = 85180, maxCount = 270 }, -- gold coin
+	{ id = 3031, chance = 85180, maxCount = 140 }, -- gold coin
 	{ id = 266, chance = 4930 }, -- health potion
 	{ id = 268, chance = 4950 }, -- mana potion
 	{ id = 3269, chance = 3030 }, -- halberd

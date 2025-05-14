@@ -4,7 +4,7 @@ function galthensTree.onUse(player, item, fromPosition, target, toPosition, isHo
 	if hasExhaustion < os.time() then
 		local container = player:addItem(36813)
 		container:addItem(36810, 1)
-		player:kv():set("galthens-satchel", os.time() + 2 * 20 * 60 * 60)
+		player:kv():set("galthens-satchel", os.time() + 30 * 24 * 60 * 60)
 		message = "You have found a galthens satchel."
 	end
 

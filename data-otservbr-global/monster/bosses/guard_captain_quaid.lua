@@ -28,6 +28,7 @@ monster.manaCost = 0
 monster.events = {
 	"UglyMonsterSpawn",
 	"UglyMonsterCleanup",
+	"grave_danger_death",
 }
 
 monster.changeTarget = {
@@ -53,7 +54,7 @@ monster.flags = {
 	canPushItems = true,
 	canPushCreatures = true,
 	staticAttackChance = 90,
-	targetDistance = 1,
+	targetDistance = 4,
 	runHealth = 0,
 	healthHidden = false,
 	isBlockable = false,

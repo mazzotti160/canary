@@ -57,7 +57,7 @@ monster.flags = {
 	canPushCreatures = false,
 	staticAttackChance = 80,
 	targetDistance = 1,
-	runHealth = 0,
+	runHealth = 1,
 	healthHidden = false,
 	isBlockable = false,
 	canWalkOnEnergy = true,
@@ -77,7 +77,6 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "minor crystalline token", chance = 650, maxCount = 5 },	
 	{ name = "gold coin", chance = 100000, maxCount = 100 },
 	{ name = "platinum coin", chance = 92000, maxCount = 7 },
 	{ name = "stone skin amulet", chance = 2270 },

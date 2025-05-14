@@ -17,13 +17,8 @@ monster.health = 80
 monster.maxHealth = 80
 monster.race = "undead"
 monster.corpse = 5972
-monster.speed = 205
+monster.speed = 75
 monster.manaCost = 0
-
-monster.bosstiary = {
-	bossRaceId = 669,
-	bossRace = RARITY_ARCHFOE,
-}
 
 monster.changeTarget = {
 	interval = 4000,

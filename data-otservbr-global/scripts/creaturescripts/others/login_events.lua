@@ -6,9 +6,6 @@ function loginEvents.onLogin(player)
 		--Cults Of Tibia Quest
 		"HealthPillar",
 		"YalahariHealth",
-		"ZombieArenaKill",
-		"ZombieArenaDeath",
-		"ZombieArenaLogout",
 	}
 
 	for i = 1, #events do

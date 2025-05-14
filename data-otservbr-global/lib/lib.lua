@@ -10,8 +10,5 @@ dofile(DATA_DIRECTORY .. "/lib/quests/quest.lua")
 -- Tables library
 dofile(DATA_DIRECTORY .. "/lib/tables/load.lua")
 
--- Task Cust
-dofile(DATA_DIRECTORY.. '/scripts/custom/load.lua')
-
--- Frag Remover
-dofile(DATA_DIRECTORY.. '/lib/custom/remove_frags.lua')
+-- Functions library
+dofile(DATA_DIRECTORY .. "/lib/functions/load.lua")

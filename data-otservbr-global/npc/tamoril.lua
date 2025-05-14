@@ -116,7 +116,6 @@ npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
-	{ itemName = "all loot in pouch", clientId = 23721, sell = 1 },
 	{ itemName = "blue gem", clientId = 3041, sell = 5000 },
 	{ itemName = "golden mug", clientId = 2903, sell = 250 },
 	{ itemName = "green gem", clientId = 3038, sell = 5000 },

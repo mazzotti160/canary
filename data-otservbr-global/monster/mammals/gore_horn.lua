@@ -83,7 +83,6 @@ monster.loot = {
 	{ name = "Diamond Sceptre", chance = 2060 },
 	{ name = "Doublet", chance = 1390 },
 	{ name = "Hammer of Wrath", chance = 1070 },
-		{ name = "primal bag", chance = 1 },	
 }
 
 monster.attacks = {
@@ -91,7 +90,7 @@ monster.attacks = {
 	{ name = "combat", interval = 3500, chance = 20, type = COMBAT_ENERGYDAMAGE, minDamage = -450, maxDamage = -750, length = 7, spread = 0, effect = CONST_ME_ENERGYAREA, target = false },
 	{ name = "combat", interval = 4100, chance = 15, type = COMBAT_PHYSICALDAMAGE, minDamage = -500, maxDamage = -900, radius = 7, effect = CONST_ME_EXPLOSIONAREA, target = false },
 	{ name = "combat", interval = 2700, chance = 35, type = COMBAT_ENERGYDAMAGE, minDamage = -500, maxDamage = -850, range = 1, shootEffect = CONST_ANI_ENERGY, target = true },
-	--{ name = "root", interval = 2000, chance = 1, target = true },
+	{ name = "root", interval = 2000, chance = 1, target = true },
 }
 
 monster.defenses = {
